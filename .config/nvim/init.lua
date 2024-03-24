@@ -17,29 +17,15 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local plugins = {
-  { "rebelot/kanagawa.nvim", name = "kanagawa", priority = 1000},
-   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.6',
-      dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-    {
-      'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'
-    }
-}
 local opts = {}
 
-require("lazy").setup(plugins, opts)
-local builtin = require("telescope.builtin")
-vim.keymap.set('n', '<C-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+require("lazy").setup("plugins")
 
-require("kanagawa").setup()
-vim.cmd.colorscheme "kanagawa"
+
+
 
 local config = require("nvim-treesitter.configs")
 config.setup({
-  ensure_installed = { "lua", "javascript", "typescript" },
   hightlight = { enable = true },
   indent = { enable = true }, 
 })
