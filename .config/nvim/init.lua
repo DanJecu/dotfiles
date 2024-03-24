@@ -2,7 +2,9 @@ vim.cmd("set expandtab")
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
 vim.cmd("set shiftwidth=2")
+vim.cmd("set number")
 vim.g.mapleader = " "
+
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -17,15 +19,4 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local opts = {}
-
 require("lazy").setup("plugins")
-
-
-
-
-local config = require("nvim-treesitter.configs")
-config.setup({
-  hightlight = { enable = true },
-  indent = { enable = true }, 
-})
