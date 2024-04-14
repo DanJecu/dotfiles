@@ -1,5 +1,6 @@
 # Ignore everything
 /*
 # Files to track
-!/.config
+!/.config/nvim
+!/.config/fish
 .gitignore
