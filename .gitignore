@@ -2,5 +2,5 @@
 /*
 # Files to track
 !/.config/nvim
-!/.config/fish
+!.wezterm.lua
 .gitignore
