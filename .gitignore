@@ -3,4 +3,6 @@
 # Files to track
 !/.config/nvim
 !.wezterm.lua
+!.p10k.zsh
+!.zshrc
 .gitignore
