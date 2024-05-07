@@ -10,7 +10,7 @@ end
 -- Settings
 config.color_scheme = "GruvboxDark"
 config.font = wezterm.font_with_fallback({
-	{ family = "MesloLGS Nerd Font Mono", scale = 1.4 },
+	{ family = "FiraCode Nerd Font Mono", scale = 1.4 },
 })
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
