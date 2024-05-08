@@ -12,6 +12,7 @@ config.color_scheme = "GruvboxDark"
 config.font = wezterm.font_with_fallback({
 	{ family = "FiraCode Nerd Font Mono", scale = 1.4 },
 })
+config.harfbuzz_features = { "calt=0" }
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
