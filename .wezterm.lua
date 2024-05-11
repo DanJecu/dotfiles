@@ -12,10 +12,15 @@ config.color_scheme = "GruvboxDark"
 config.font = wezterm.font_with_fallback({
 	{ family = "FiraCode Nerd Font Mono", scale = 1.4 },
 })
-config.harfbuzz_features = { "calt=0" }
 config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
+config.window_padding = {
+  top = 0,
+  bottom = 0,
+  left = 0,
+  right = 0
+}
 config.scrollback_lines = 3000
 config.default_workspace = "home"
 
@@ -26,7 +31,7 @@ config.inactive_pane_hsb = {
 }
 
 -- Keys
-config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "a", mods = "CMD", timeout_milliseconds = 1000 }
 config.keys = {
 	-- Send C-a when pressing C-a twice
 	{ key = "a", mods = "LEADER", action = act.SendKey({ key = "a", mods = "CTRL" }) },
