@@ -8,7 +8,7 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "GruvboxDark"
+config.color_scheme = "Gruvbox dark, hard (base16)"
 config.font = wezterm.font_with_fallback({
 	{ family = "FiraCode Nerd Font Mono", scale = 1.4 },
 })
@@ -16,10 +16,10 @@ config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
-  top = 0,
-  bottom = 0,
-  left = 0,
-  right = 0
+	top = 0,
+	bottom = 0,
+	left = 5,
+	right = 5,
 }
 config.scrollback_lines = 3000
 config.default_workspace = "home"
