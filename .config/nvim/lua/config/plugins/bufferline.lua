@@ -5,6 +5,7 @@ return {
 	opts = {
 		options = {
 			mode = "tabs",
+			truncate_names = false,
 		},
 	},
 }
