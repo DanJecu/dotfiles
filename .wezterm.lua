@@ -8,7 +8,7 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "Gruvbox dark, hard (base16)"
+config.color_scheme = "Catppuccin Mocha"
 config.font = wezterm.font_with_fallback({
 	{ family = "FiraCode Nerd Font Mono", scale = 1.4 },
 })
@@ -32,6 +32,11 @@ config.inactive_pane_hsb = {
 
 -- Keys
 config.leader = { key = "a", mods = "CMD", timeout_milliseconds = 1000 }
+
+-- Enable {} on Danish keyboard
+config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
+
 config.keys = {
 	-- Send C-a when pressing C-a twice
 	{ key = "a", mods = "LEADER", action = act.SendKey({ key = "a", mods = "CTRL" }) },
