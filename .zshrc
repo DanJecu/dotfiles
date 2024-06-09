@@ -126,6 +126,9 @@ bindkey '^[[B' history-search-forward
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# ---- NeoVim shortcut
+alias vim='nvim'
+
 # ---- Eza (better ls) -----
 alias ls="eza --icons=always"
 
@@ -138,3 +141,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # ---- postgresql ----
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/danjecu/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
