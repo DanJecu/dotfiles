@@ -1,6 +1,7 @@
 -- Most load before lazy nvim
 require("vim-options")
 require("ui-options")
+require("keymaps")
 -- Load lazy nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
