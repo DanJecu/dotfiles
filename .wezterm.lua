@@ -9,9 +9,6 @@ end
 
 -- Settings
 config.color_scheme = "Catppuccin Latte"
-config.font = wezterm.font_with_fallback({
-	{ family = "firacode nerd font mono", scale = 1.4 },
-})
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_decorations = "RESIZE"
@@ -19,8 +16,8 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
 	top = 0,
 	bottom = 0,
-	left = 5,
-	right = 5,
+	left = 10,
+	right = 10,
 }
 config.scrollback_lines = 3000
 config.default_workspace = "home"
