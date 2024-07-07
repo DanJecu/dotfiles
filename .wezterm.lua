@@ -9,6 +9,7 @@ end
 
 -- Settings
 config.color_scheme = "Catppuccin Latte"
+config.font = wezterm.font("Fira Code")
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 config.window_decorations = "RESIZE"
