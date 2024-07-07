@@ -8,7 +8,7 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "Catppuccin Latte"
+config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font("Fira Code")
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
