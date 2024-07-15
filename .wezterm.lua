@@ -11,7 +11,7 @@ end
 config.color_scheme = "Catppuccin Macchiato"
 config.font = wezterm.font_with_fallback({ {
 	family = "Fira Code",
-	scale = 1.3,
+	scale = 1.4,
 } })
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
