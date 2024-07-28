@@ -8,13 +8,13 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "Catppuccin Latte"
 config.font = wezterm.font_with_fallback({ {
-	family = "Fira Code",
-	scale = 1.4,
+	family = "Hack",
+	scale = 1.5,
 } })
 -- disable font ligatures --
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.harfbuzz_features = { "calt=0" }
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
