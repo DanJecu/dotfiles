@@ -9,10 +9,9 @@ end
 
 -- Settings
 config.color_scheme = "Catppuccin Latte"
-config.font = wezterm.font_with_fallback({ {
-	family = "Hack",
-	scale = 1.5,
-} })
+config.font = wezterm.font("Hack")
+config.font_size = 16
+config.line_height = 1.2
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0" }
 config.window_decorations = "RESIZE"
