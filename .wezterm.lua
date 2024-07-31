@@ -1,6 +1,22 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
+-- Switch theme based on system
+local function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Mocha"
+	else
+		return "Catppuccin Latte"
+	end
+end
+--
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then
@@ -8,17 +24,19 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "Catppuccin Latte"
-config.font = wezterm.font("Hack")
-config.font_size = 16
+config.color_scheme = scheme_for_appearance(get_appearance())
+config.font = wezterm.font_with_fallback({
+	{ family = "FiraCode Nerd Font" },
+})
+config.font_size = 15.5
 config.line_height = 1.2
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0" }
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
-	top = 0,
-	bottom = 0,
+	top = 5,
+	bottom = 5,
 	left = 10,
 	right = 10,
 }
