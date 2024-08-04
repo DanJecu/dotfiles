@@ -26,9 +26,9 @@ end
 -- Settings
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.font = wezterm.font_with_fallback({
-	{ family = "FiraCode Nerd Font" },
+	{ family = "FiraCode Nerd Font", weight = "Medium" },
 })
-config.font_size = 15.5
+config.font_size = 16
 config.line_height = 1.2
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0" }
