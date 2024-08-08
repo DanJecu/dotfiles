@@ -46,7 +46,7 @@ config.default_workspace = "home"
 -- Dim inactive panes
 config.inactive_pane_hsb = {
 	saturation = 0.24,
-	brightness = 0.5,
+	brightness = 0.6,
 }
 
 -- Keys
