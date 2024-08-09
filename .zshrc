@@ -129,3 +129,7 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 alias vim=nvim
 eval 
 TWILIO_AC_ZSH_SETUP_PATH=/Users/danjecu/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH; # twilio autocomplete setup
+
+pr-fix-lint() {
+  git commit -m "fix: lint" --no-verify && git push --no-verify
+}
