@@ -20,6 +20,8 @@ brew "node"            # Node.js (JavaScript runtime)
 brew "docker-compose"
 
 # Development Tools
+brew "gh"              # GitHub command-line tool
+brew "git"             # Git version control system
 brew "fd"              # Simple, fast and user-friendly alternative to find
 brew "fzf"             # Command-line fuzzy finder written in Go
 brew "gh"              # GitHub command-line tool
