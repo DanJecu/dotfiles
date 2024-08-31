@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Define the path to your .dotfiles directory
+# Define the path to .dotfiles directory
 DOTFILES_DIR="$HOME/.dotfiles"
 
 # Function to create a symlink, replacing any existing destination
