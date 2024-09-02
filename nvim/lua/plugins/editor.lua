@@ -76,4 +76,11 @@ return {
       vim.api.nvim_set_hl(0, "NotifyINFOIcon", { fg = "#40a02b" })
     end,
   },
+  {
+    "hrsh7th/nvim-cmp",
+    opts = function(_, opts)
+      local cmp = require("cmp")
+      opts.mapping["<M-Space>"] = cmp.mapping.complete()
+    end,
+  },
 }

@@ -25,8 +25,9 @@ end
 
 -- Settings
 config.color_scheme = scheme_for_appearance(get_appearance())
-config.font_size = 15
-config.line_height = 1.3
+config.font = wezterm.font("Monaspace Neon", { weight = "Regular" })
+config.font_size = 16
+config.line_height = 1.2
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0" }
 config.window_decorations = "RESIZE"
