@@ -105,6 +105,15 @@ config.key_tables = {
 	},
 }
 
+-- move tab
+for i = 1, 8 do
+	-- CTRL+ALT + number to move to that position
+	table.insert(config.keys, {
+		key = tostring(i),
+		mods = "CTRL|ALT",
+		action = wezterm.action.MoveTab(i - 1),
+	})
+end
 -- Tab bar
 config.use_fancy_tab_bar = false
 config.status_update_interval = 1000
