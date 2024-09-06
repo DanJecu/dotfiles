@@ -126,3 +126,4 @@ clean-nvim() {
     echo "Neovim cache and state cleared."
 }
 
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"

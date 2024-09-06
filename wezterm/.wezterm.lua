@@ -17,17 +17,22 @@ local function scheme_for_appearance(appearance)
 	end
 end
 --
+
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
-
 -- Settings
+config.default_cursor_style = "BlinkingBar"
 config.color_scheme = scheme_for_appearance(get_appearance())
-config.font = wezterm.font("Monaspace Neon", { weight = "Regular" })
-config.font_size = 16
-config.line_height = 1.2
+config.font = wezterm.font({ family = "Hack", weight = "Regular" })
+config.font_size = 15
+config.line_height = 1.1
+config.cell_width = 1
+config.front_end = "WebGpu"
+config.freetype_load_target = "Light"
+config.freetype_render_target = "HorizontalLcd"
 -- disable font ligatures --
 config.harfbuzz_features = { "calt=0" }
 config.window_decorations = "RESIZE"
@@ -116,7 +121,33 @@ for i = 1, 8 do
 end
 -- Tab bar
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
+config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
+
+wezterm.on("user-var-changed", function(window, pane, name, value)
+	local overrides = window:get_config_overrides() or {}
+	if name == "ZEN_MODE" then
+		local incremental = value:find("+")
+		local number_value = tonumber(value)
+		if incremental ~= nil then
+			while number_value > 0 do
+				window:perform_action(wezterm.action.IncreaseFontSize, pane)
+				number_value = number_value - 1
+			end
+			overrides.enable_tab_bar = false
+		elseif number_value < 0 then
+			window:perform_action(wezterm.action.ResetFontSize, pane)
+			overrides.font_size = nil
+			overrides.enable_tab_bar = true
+		else
+			overrides.font_size = number_value
+			overrides.enable_tab_bar = false
+		end
+	end
+	window:set_config_overrides(overrides)
+end)
+
 wezterm.on("update-right-status", function(window, pane)
 	-- Workspace name
 	local stat = window:active_workspace()
