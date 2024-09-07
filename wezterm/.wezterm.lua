@@ -26,8 +26,8 @@ end
 -- Settings
 config.default_cursor_style = "BlinkingBar"
 config.color_scheme = scheme_for_appearance(get_appearance())
-config.font = wezterm.font({ family = "Hack", weight = "Regular" })
-config.font_size = 15
+config.font = wezterm.font({ family = "Fira Code", weight = "Regular" })
+config.font_size = 15.2
 config.line_height = 1.1
 config.cell_width = 1
 config.front_end = "WebGpu"

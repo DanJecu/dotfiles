@@ -12,3 +12,10 @@ vim.keymap.set("n", "<leader>wc", function()
   vim.fn.setreg("+", result)
   print("Copied: " .. result)
 end, { noremap = true, silent = true, desc = "Copy relative path to line" })
+
+-- move selected lines
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- open Ex
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
