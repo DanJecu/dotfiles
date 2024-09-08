@@ -120,7 +120,7 @@ for i = 1, 8 do
 end
 -- Tab bar
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
+config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
 
