@@ -33,7 +33,7 @@ vim.opt.splitbelow = true
 
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.cursorline = true
+vim.opt.cursorline = false -- hightlight cursor line
 
 vim.opt.mouse = "a"
 

@@ -25,8 +25,10 @@ if wezterm.config_builder then
 end
 -- Settings
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = 'Catppuccin Latte'
-config.font = wezterm.font({ family = "Fira Mono"  })
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 20
+config.color_scheme = 'rose-pine-moon'
+config.font = wezterm.font({ family = "DejaVuSansM Nerd Font Mono"  })
 config.font_size = 16
 config.line_height = 1.1
 config.cell_width = 1
@@ -121,7 +123,6 @@ for i = 1, 8 do
 end
 -- Tab bar
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
 
