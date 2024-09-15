@@ -28,7 +28,7 @@ config.default_cursor_style = "BlinkingBar"
 config.color_scheme = scheme_for_appearance(get_appearance())
 config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
 config.font_size = 15
-config.line_height = 1.1
+config.line_height = 1.2
 config.front_end = "WebGpu"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
@@ -120,7 +120,6 @@ for i = 1, 8 do
 end
 -- Tab bar
 config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.status_update_interval = 1000
 
