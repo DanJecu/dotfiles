@@ -2,20 +2,20 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 -- Switch theme based on system
-local function get_appearance()
-	if wezterm.gui then
-		return wezterm.gui.get_appearance()
-	end
-	return "Dark"
-end
-
-local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Catppuccin Mocha"
-	else
-		return "Catppuccin Latte"
-	end
-end
+-- local function get_appearance()
+-- 	if wezterm.gui then
+-- 		return wezterm.gui.get_appearance()
+-- 	end
+-- 	return "Dark"
+-- end
+--
+-- local function scheme_for_appearance(appearance)
+-- 	if appearance:find("Dark") then
+-- 		return "Catppuccin Mocha"
+-- 	else
+-- 		return "Catppuccin Latte"
+-- 	end
+-- end
 --
 
 local config = {}
@@ -24,10 +24,13 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 -- Settings
+config.window_background_opacity = 0.77
+config.macos_window_background_blur = 20
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = scheme_for_appearance(get_appearance())
-config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
-config.font_size = 15
+config.color_scheme = "Catppuccin Mocha"
+-- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
+config.font = wezterm.font({ family = "IBM Plex Mono", weight = "Regular" })
+config.font_size = 15.2
 config.line_height = 1.2
 config.front_end = "WebGpu"
 config.freetype_load_target = "Light"

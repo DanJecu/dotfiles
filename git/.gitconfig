@@ -9,5 +9,17 @@
 [push]
 	autoSetupRemote = true
 [core]
-	editor = vim
-	autocrlf = input
+	editor = nvim
+  autocrlf = input
+  pager = delta
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
