@@ -25,7 +25,7 @@ if wezterm.config_builder then
 end
 -- Settings
 config.window_background_opacity = 0.77
-config.macos_window_background_blur = 20
+config.macos_window_background_blur = 40
 config.default_cursor_style = "BlinkingBar"
 config.color_scheme = "Catppuccin Mocha"
 -- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
