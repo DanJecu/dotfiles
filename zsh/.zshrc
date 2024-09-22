@@ -109,7 +109,7 @@ TWILIO_AC_ZSH_SETUP_PATH=/Users/danjecu/.twilio-cli/autocomplete/zsh_setup && te
 pr-fix-lint() {
   git commit -m "fix: lint" --no-verify && git push --no-verify
 }
-
+#-- Twilio Stuff
 deploy-twilio-patch() {
   if [ -z "$1" ]; then
     echo "Error: Please provide a changelog message."
@@ -119,6 +119,8 @@ deploy-twilio-patch() {
   twilio flex:plugins:deploy --patch --changelog "$1"
 }
 
+#-- Neovim stuff
+
 clean-nvim() {
     rm -rf ~/.local/share/nvim
     rm -rf ~/.local/state/nvim
@@ -126,4 +128,40 @@ clean-nvim() {
     echo "Neovim cache and state cleared."
 }
 
+#-- Github CLI -- Find PR
+
+pr() {
+  if [ -z "$1" ]; then
+    echo "Error: Please provide a commit SHA"
+    return 1
+  fi
+    gh pr list --search "$1" --state merged --web
+
+}
+
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+# ---- FZF -----
+
+# Set up fzf key bindings and fuzzy completion
+eval "$(fzf --zsh)"
+
+
+# -- Use fd instead of fzf --
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+

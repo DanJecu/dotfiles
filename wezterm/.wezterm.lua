@@ -2,21 +2,20 @@ local wezterm = require("wezterm")
 local act = wezterm.action
 
 -- Switch theme based on system
--- local function get_appearance()
--- 	if wezterm.gui then
--- 		return wezterm.gui.get_appearance()
--- 	end
--- 	return "Dark"
--- end
---
--- local function scheme_for_appearance(appearance)
--- 	if appearance:find("Dark") then
--- 		return "Catppuccin Mocha"
--- 	else
--- 		return "Catppuccin Latte"
--- 	end
--- end
---
+local function get_appearance()
+	if wezterm.gui then
+		return wezterm.gui.get_appearance()
+	end
+	return "Dark"
+end
+
+local function scheme_for_appearance(appearance)
+	if appearance:find("Dark") then
+		return "Catppuccin Macchiato"
+	else
+		return "Catppuccin Latte"
+	end
+end
 
 local config = {}
 -- Use config builder object if possible
@@ -24,12 +23,12 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 -- Settings
-config.window_background_opacity = 0.80
-config.macos_window_background_blur = 80
+-- config.window_background_opacity = 0.88
+-- config.macos_window_background_blur = 80
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = "Catppuccin Mocha"
--- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
-config.font = wezterm.font({ family = "IBM Plex Mono", weight = "Regular" })
+config.color_scheme = scheme_for_appearance(get_appearance())
+config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
+-- config.font = wezterm.font({ family = "IBM Plex Mono" })
 config.font_size = 15.2
 config.line_height = 1.2
 config.front_end = "WebGpu"
@@ -42,8 +41,8 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
 	top = 5,
 	bottom = 5,
-	left = 10,
-	right = 10,
+	left = 5,
+	right = 5,
 }
 config.scrollback_lines = 3000
 config.default_workspace = "home"
