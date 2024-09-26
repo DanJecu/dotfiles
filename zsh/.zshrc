@@ -74,7 +74,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
 # history setup
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -101,6 +100,8 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # --- vim aliases ----
 alias vim=nvim
+alias vi=nvim
+EDITOR=nvim
 eval 
 TWILIO_AC_ZSH_SETUP_PATH=/Users/danjecu/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH; # twilio autocomplete setup
 
@@ -165,3 +166,6 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+bindkey "^X^E" edit-command-line
+
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
