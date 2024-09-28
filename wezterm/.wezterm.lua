@@ -24,11 +24,8 @@ if wezterm.config_builder then
 end
 -- Settings
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = "Catppuccin Macchiato"
+config.color_scheme = "carbonfox"
 config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
--- config.font = wezterm.font({ family = "SF Mono" })
--- config.font = wezterm.font({ family = "IBM Plex Mono" })
--- config.font = wezterm.font({ family = "CommitMono" })
 config.font_size = 15.2
 config.line_height = 1.2
 config.front_end = "WebGpu"
