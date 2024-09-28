@@ -37,6 +37,7 @@ ZSH_THEME="dan-zsh"
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -88,18 +89,13 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # zsh plugins
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# ---- NVM--DIR ----
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # ---- postgresql ----
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # --- vim aliases ----
-alias vim=nvim
 alias vi=nvim
 EDITOR=nvim
 eval 
@@ -168,4 +164,6 @@ _fzf_compgen_dir() {
 
 bindkey "^X^E" edit-command-line
 
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -6,9 +6,6 @@ tap "nikitabobko/tap"
 tap "phrase/brewed"
 tap "twilio/brew"
 
-# Utilities
-brew "bat"             # A cat(1) clone with syntax highlighting and Git integration
-
 # Programming Languages
 brew "go"              # The Go programming language
 brew "lua"             # Lua 🌝
