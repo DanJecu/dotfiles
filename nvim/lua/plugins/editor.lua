@@ -27,82 +27,32 @@ return {
     tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local h_pct = 0.90
-      local w_pct = 0.80
-
       require("telescope").setup({
-        borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
-        preview = { hide_on_startup = false },
-        layout_strategy = "flex",
-        layout_config = {
-          flex = { flip_columns = 100 },
-          horizontal = {
-            mirror = false,
-            prompt_position = "top",
-            width = function(_, cols, _)
-              return math.floor(cols * w_pct)
-            end,
-            height = function(_, _, rows)
-              return math.floor(rows * h_pct)
-            end,
-            preview_cutoff = 10,
-            preview_width = 0.5,
-          },
-          vertical = {
-            mirror = true,
-            prompt_position = "top",
-            width = function(_, cols, _)
-              return math.floor(cols * w_pct)
-            end,
-            height = function(_, _, rows)
-              return math.floor(rows * h_pct)
-            end,
-            preview_cutoff = 10,
-            preview_height = 0.5,
-          },
-        },
+        preview = { hide_on_startup = true },
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
         },
-
+        defaults = {
+          file_ignore_patterns = { "node_modules" },
+          path_display = filenameFirst,
+          mappings = {
+            n = {
+              ["o"] = require("telescope.actions.layout").toggle_preview,
+            },
+          },
+        },
         pickers = {
-          find_files = {
-            file_ignore_patterns = {
-              "node_modules",
-            },
-            path_display = filenameFirst,
-            preview = false,
-            mappings = {
-              n = {
-                ["o"] = require("telescope.actions.layout").toggle_preview,
-              },
-            },
-          },
-          git_files = {
-            file_ignore_patterns = {
-              "node_modules",
-            },
-            path_display = filenameFirst,
-            mappings = {
-              n = {
-                ["o"] = require("telescope.actions.layout").toggle_preview,
-              },
-            },
-          },
           live_grep = {
-            file_ignore_patterns = {
-              "node_modules",
-            },
-            path_display = filenameFirst,
+            preview = { hide_on_startup = true },
           },
         },
       })
 
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>ps", function()
-        builtin.grep_string({ search = vim.fn.input("Grep > ") })
+        builtin.grep_string({ search = vim.fn.input("Grep > ") }, { desc = "Grep string" })
       end)
     end,
   },
