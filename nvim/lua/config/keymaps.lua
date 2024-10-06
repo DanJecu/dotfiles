@@ -1,9 +1,12 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Don't copy cut text
 keymap.set("n", "x", '"_x')
+
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
+--
 -- This sets up a keymap for copying the relative file path and line number
 keymap.set("n", "<leader>wc", function()
   local project_root = vim.fn.getcwd()
@@ -21,6 +24,10 @@ keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- open Ex
 keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Split windows
+keymap.set("n", "<leader>v", ":vsplit<CR>", opts)
+keymap.set("n", "<leader>h", ":split<CR>", opts)
 
 -- Tabs
 keymap.set("n", "te", ":tabedit")

@@ -60,6 +60,7 @@ return {
     config = function()
       vim.api.nvim_set_hl(0, "NotifyINFOTitle", { fg = "#40a02b" })
       vim.api.nvim_set_hl(0, "NotifyINFOIcon", { fg = "#40a02b" })
+      vim.api.nvim_set_hl(0, "NotifyBackground", { bg = "#000000" })
     end,
   },
   {

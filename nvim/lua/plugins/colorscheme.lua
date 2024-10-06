@@ -1,14 +1,14 @@
 return {
   {
-    {
-      "EdenEast/nightfox.nvim",
-      lazy = true,
+    "catppuccin/nvim",
+    opts = {
+      transparent_background = true,
     },
   },
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "nightfox",
+      colorscheme = "catppuccin",
     },
   },
 }

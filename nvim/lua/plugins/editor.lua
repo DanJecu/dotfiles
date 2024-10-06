@@ -45,7 +45,7 @@ return {
         },
         pickers = {
           live_grep = {
-            preview = { hide_on_startup = true },
+            preview = { hide_on_startup = false },
           },
         },
       })

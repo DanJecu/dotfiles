@@ -1,22 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
 
--- Switch theme based on system
--- local function get_appearance()
--- 	if wezterm.gui then
--- 		return wezterm.gui.get_appearance()
--- 	end
--- 	return "Dark"
--- end
---
--- local function scheme_for_appearance(appearance)
--- 	if appearance:find("Dark") then
--- 		return "Catppuccin Macchiato"
--- 	else
--- 		return "Catppuccin Latte"
--- 	end
--- end
-
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then
@@ -24,13 +8,13 @@ if wezterm.config_builder then
 end
 -- Settings
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = "Catppuccin Macchiato"
-config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
+config.color_scheme = "Dark+"
+-- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono", weight = "Regular" })
 -- config.font = wezterm.font({ family = "SF Mono" })
--- config.font = wezterm.font({ family = "IBM Plex Mono" })
+config.font = wezterm.font({ family = "IBM Plex Mono" })
 -- config.font = wezterm.font({ family = "CommitMono" })
 config.font_size = 15.2
-config.line_height = 1.2
+config.line_height = 1.4
 config.front_end = "WebGpu"
 config.freetype_load_target = "Light"
 config.freetype_render_target = "HorizontalLcd"
@@ -41,11 +25,12 @@ config.window_close_confirmation = "AlwaysPrompt"
 config.window_padding = {
 	top = 5,
 	bottom = 5,
-	left = 5,
-	right = 5,
+	left = 10,
+	right = 10,
 }
 config.scrollback_lines = 3000
 config.default_workspace = "home"
+
 -- Dim inactive panes
 config.inactive_pane_hsb = {
 	saturation = 0.24,
