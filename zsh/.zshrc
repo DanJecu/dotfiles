@@ -137,7 +137,7 @@ pr() {
 }
 
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
+export PHRASE_ACCESS_TOKEN=5b79323e133d0385910d439d99f9f3b6a39cec8441d62f06979e77cb3cf0093f
 # ---- FZF -----
 
 # Set up fzf key bindings and fuzzy completion
@@ -167,3 +167,4 @@ bindkey "^X^E" edit-command-line
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+. "/Users/dan.jecu/.deno/env"
