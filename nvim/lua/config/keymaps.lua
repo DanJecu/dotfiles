@@ -1,41 +1,40 @@
-local keymap = vim.keymap
-local opts = { noremap = true, silent = true }
-
--- Don't copy cut text
-keymap.set("n", "x", '"_x')
+-- Open Ex
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
 -- Select all
-keymap.set("n", "<C-a>", "gg<S-v>G")
---
--- This sets up a keymap for copying the relative file path and line number
-keymap.set("n", "<leader>wc", function()
-  local project_root = vim.fn.getcwd()
-  local filepath = vim.fn.expand("%:p")
-  local relative_path = filepath:sub(#project_root + 2)
-  local linenum = vim.fn.line(".")
-  local result = relative_path .. ":" .. linenum
-  vim.fn.setreg("+", result)
-  print("Copied: " .. result)
-end, { noremap = true, silent = true, desc = "Copy relative path to line" })
-
+vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 -- move selected lines
-keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
--- open Ex
-keymap.set("n", "<leader>pv", vim.cmd.Ex)
+-- Clear highlights
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
--- Split windows
-keymap.set("n", "<leader>v", ":vsplit<CR>", opts)
-keymap.set("n", "<leader>h", ":split<CR>", opts)
 
--- Tabs
-keymap.set("n", "te", ":tabedit")
-keymap.set("n", "<tab>", ":tabnext<Return>", opts)
-keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
-keymap.set("n", "tw", ":tabclose<Return>", opts)
--- Resize window
-keymap.set("n", "<C-S-h>", "<C-w><")
-keymap.set("n", "<C-S-l>", "<C-w>>")
-keymap.set("n", "<C-S-k>", "<C-w>+")
-keymap.set("n", "<C-S-j>", "<C-w>-")
+-- Diagnostic keymaps
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
+
+-- Windows
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>' )
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>' )
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>' )
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>' )
+
+vim.api.nvim_set_keymap('n', '<leader>v', ':vsplit<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>s', ':split<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>wd', ':close<CR>', { noremap = true, silent = true })
+
+-- buffers
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>" )
+vim.keymap.set("n", "<leader>bd", ":bd<CR>" )
+vim.keymap.set("n", "<leader>bD", "<cmd>:bd<cr>")
+
+-- Highlight when yanking (copying) text
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})

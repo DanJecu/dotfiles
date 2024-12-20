@@ -8,7 +8,7 @@ if wezterm.config_builder then
 end
 -- Settings
 config.default_cursor_style = "BlinkingBar"
-config.color_scheme = "OneDark (base16)"
+config.color_scheme = 'OneDark (base16)'
 -- config.window_background_opacity = 0.72
 -- config.macos_window_background_blur = 70
 -- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono" })
