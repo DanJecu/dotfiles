@@ -1,0 +1,7 @@
+font-size = 15
+
+keybind = ctrl+\=new_split:right
+keybind = ctrl+-=new_split:down
+
+unfocused-split-opacity = 0.8
+window-theme = ghostty

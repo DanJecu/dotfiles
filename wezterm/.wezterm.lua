@@ -12,8 +12,8 @@ config.color_scheme = "OneDark (base16)"
 -- config.window_background_opacity = 0.72
 -- config.macos_window_background_blur = 70
 -- config.font = wezterm.font({ family = "Bitstream Vera Sans Mono" })
--- config.font = wezterm.font({ family = "SF Mono" })
-config.font_size = 15.5
+-- config.font = wezterm.font({ family = "CommitMono" })
+config.font_size = 16
 config.line_height = 1.2
 config.front_end = "WebGpu"
 config.freetype_load_target = "Light"
