@@ -27,6 +27,7 @@ symlinks=(
   "$DOTFILES_DIR/nvim:$HOME/.config/nvim"
   "$DOTFILES_DIR/wezterm/.wezterm.lua:$HOME/.wezterm.lua"
   "$DOTFILES_DIR/git/.gitconfig:$HOME/.gitconfig"
+  "$DOTFILES_DIR/ghostty:$HOME/.config/ghostty"
 )
 
 # Initialize counters
