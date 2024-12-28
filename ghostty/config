@@ -3,10 +3,14 @@ font-size = 15
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
 
-keybind = ctrl+k=goto_split:top
-keybind = ctrl+l=goto_split:right
-keybind = ctrl+j=goto_split:bottom
-keybind = ctrl+h=goto_split:left
+keybind = cmd+a>k=goto_split:top
+keybind = cmd+a>l=goto_split:right
+keybind = cmd+a>j=goto_split:bottom
+keybind = cmd+a>h=goto_split:left
+
+keybind = cmd+a>x=close_surface
+
+keybind = global:alt+ctrl+s=toggle_quick_terminal
 
 unfocused-split-opacity = 0.8
 window-theme = auto
