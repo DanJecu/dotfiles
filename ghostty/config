@@ -1,11 +1,10 @@
+theme = "nordfox"
+
 font-size = 15
 font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
 
-font-family = "BitstromWera Nerd Font Mono"
-font-style = "Regular"
-adjust-cell-width = -5%
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
