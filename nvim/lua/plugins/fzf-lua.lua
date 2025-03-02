@@ -6,18 +6,11 @@ return {
       winopts = {
         height = 0.85,
         width = 0.80,
-        preview = { layout = 'vertical' },
       },
       files = {
         cmd = 'fd --type f --exclude node_modules --exclude .nx',
-      },
-    },
-    keymap = {
-      builtin = {
-        ['<C-d>'] = 'preview-page-down', -- Scroll down in preview
-        ['<C-u>'] = 'preview-page-up', -- Scroll up in preview
-        ['<C-f>'] = 'preview-half-page-down', -- Half-page down
-        ['<C-b>'] = 'preview-half-page-up', -- Half-page up
+        formatter = 'path.filename_first',
+        cwd_prompt = false,
       },
     },
     keys = {
@@ -41,6 +34,19 @@ return {
           require('fzf-lua').buffers()
         end,
         desc = 'Find Buffers (fzf-lua)',
+      },
+      {
+        '<C-l>', -- Keybinding for adding all files to quickfix
+        function()
+          local actions = require 'fzf-lua.actions' -- Ensure actions are required
+          local fzf = require 'fzf-lua'
+          fzf.files {
+            actions = {
+              ['<C-l>'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
+            },
+          }
+        end,
+        desc = 'Add All Files to Quickfix (fzf-lua)',
       },
     },
   },
