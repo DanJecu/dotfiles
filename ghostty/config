@@ -5,7 +5,6 @@ font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
 
-
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
 
