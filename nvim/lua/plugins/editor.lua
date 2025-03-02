@@ -1,59 +1,4 @@
 return {
-  -- Colorscheme
-  {
-    'edeneast/nightfox.nvim',
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd 'colorscheme nordfox'
-    end,
-  },
-  -- Fzf
-  {
-    'ibhagwan/fzf-lua',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }, -- optional
-    opts = {
-      winopts = {
-        height = 0.85, -- adjust window height
-        width = 0.80,
-        preview = { layout = 'vertical' },
-      },
-      files = {
-        cmd = 'fd --type f --exclude node_modules --exclude .nx',
-      },
-    },
-    keymap = {
-      builtin = {
-        ['<C-d>'] = 'preview-page-down', -- Scroll down in preview
-        ['<C-u>'] = 'preview-page-up', -- Scroll up in preview
-        ['<C-f>'] = 'preview-half-page-down', -- Half-page down
-        ['<C-b>'] = 'preview-half-page-up', -- Half-page up
-      },
-    },
-    keys = {
-      {
-        '<leader>/',
-        function()
-          require('fzf-lua').live_grep()
-        end,
-        desc = 'Live Grep (fzf-lua)',
-      },
-      {
-        '<C-p>',
-        function()
-          require('fzf-lua').files()
-        end,
-        desc = 'Find Files (fzf-lua)',
-      },
-      {
-        '<leader><leader>',
-        function()
-          require('fzf-lua').buffers()
-        end,
-        desc = 'Find Buffers (fzf-lua)',
-      },
-    },
-  },
   -- Comment with "gc" for block and "gcc" for a line
   {
     'numToStr/Comment.nvim',
@@ -61,6 +6,7 @@ return {
       require('Comment').setup()
     end,
   },
+  -- LazyGit
   {
     'kdheepak/lazygit.nvim',
     lazy = true,
@@ -80,5 +26,19 @@ return {
     keys = {
       { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
+  },
+  -- Autopairs
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    -- Optional dependency
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    config = function()
+      require('nvim-autopairs').setup {}
+      -- If you want to automatically add `(` after selecting a function or method
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      local cmp = require 'cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end,
   },
 }

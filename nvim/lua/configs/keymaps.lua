@@ -38,5 +38,8 @@ vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 vim.keymap.set('n', 'd', '"_d')
 vim.keymap.set('v', 'd', '"_d')
 
+-- Keep `dd` copying deleted lines
+vim.keymap.set('n', 'dd', 'dd', { noremap = true, silent = true })
+
 -- Don't copy when pasting over selection
 vim.keymap.set('v', 'p', '"_dP')
