@@ -12,6 +12,11 @@ return {
         formatter = 'path.filename_first',
         cwd_prompt = false,
       },
+      keymap = {
+        fzf = {
+          ['ctrl-l'] = 'select-all+accept',
+        },
+      },
     },
     keys = {
       {
@@ -34,19 +39,6 @@ return {
           require('fzf-lua').buffers()
         end,
         desc = 'Find Buffers (fzf-lua)',
-      },
-      {
-        '<C-l>', -- Keybinding for adding all files to quickfix
-        function()
-          local actions = require 'fzf-lua.actions' -- Ensure actions are required
-          local fzf = require 'fzf-lua'
-          fzf.files {
-            actions = {
-              ['<C-l>'] = { fn = actions.file_sel_to_qf, prefix = 'select-all' },
-            },
-          }
-        end,
-        desc = 'Add All Files to Quickfix (fzf-lua)',
       },
     },
   },
