@@ -38,5 +38,17 @@ vim.keymap.set('n', '<C-a>', 'gg<S-v>G')
 vim.keymap.set('n', 'd', '"_d')
 vim.keymap.set('v', 'd', '"_d')
 
+-- Keep `dd` copying deleted lines
+vim.keymap.set('n', 'dd', 'dd', { noremap = true, silent = true })
+
 -- Don't copy when pasting over selection
 vim.keymap.set('v', 'p', '"_dP')
+
+-- Copy relative path and line numeber on cursor
+vim.keymap.set('n', '<leader>cp', function()
+  local file = vim.fn.expand '%' -- Get relative file path
+  local line = vim.fn.line '.' -- Get current line number
+  local result = file .. ':' .. line
+  vim.fn.setreg('+', result) -- Copy to system clipboard
+  print('Copied: ' .. result)
+end, { desc = 'Copy relative file path with line number' })
