@@ -32,13 +32,14 @@ return {
         function()
           require('fzf-lua').files()
         end,
-        desc = 'Find Files (fzf-lua)',
+        desc = 'Find Files',
       },
       {
         '<leader><leader>',
         function()
           require('fzf-lua').buffers()
         end,
+<<<<<<< HEAD
         desc = '[F]ind Buffers',
       },
       {
@@ -61,6 +62,25 @@ return {
           require('fzf-lua').git_stash()
         end,
         desc = '[G]it Stas[h]',
+||||||| 6be1109
+        desc = 'Find Buffers (fzf-lua)',
+=======
+        desc = '[F]ind Buffers (fzf-lua)',
+      },
+      {
+        '<leader>fg',
+        function()
+          require('fzf-lua').git_status()
+        end,
+        desc = '[F]ind [G]it Files',
+      },
+      {
+        '<leader>fw',
+        function()
+          require('fzf-lua').grep_cWORD()
+        end,
+        desc = '[F]ind [W]ord',
+>>>>>>> 597126a5462b7ec19ff1abf72483cafe3cd629c5
       },
     },
   },
