@@ -31,14 +31,14 @@ return {
         function()
           require('fzf-lua').files()
         end,
-        desc = 'Find Files (fzf-lua)',
+        desc = 'Find Files',
       },
       {
         '<leader><leader>',
         function()
           require('fzf-lua').buffers()
         end,
-        desc = 'Find Buffers (fzf-lua)',
+        desc = '[F]ind Buffers (fzf-lua)',
       },
       {
         '<leader>fg',
@@ -46,6 +46,13 @@ return {
           require('fzf-lua').git_status()
         end,
         desc = '[F]ind [G]it Files',
+      },
+      {
+        '<leader>fw',
+        function()
+          require('fzf-lua').grep_cWORD()
+        end,
+        desc = '[F]ind [W]ord',
       },
     },
   },
