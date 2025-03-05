@@ -4,14 +4,13 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
       winopts = {
-        height = 0.85,
-        width = 0.80,
         preview = { layout = 'vertical' },
       },
-      files = {
+      defaults = {
         cmd = 'fd --type f --exclude node_modules --exclude .nx',
         formatter = 'path.filename_first',
         cwd_prompt = false,
+        hidden = false,
       },
       keymap = {
         fzf = {
