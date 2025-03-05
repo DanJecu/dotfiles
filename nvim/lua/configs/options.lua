@@ -12,6 +12,10 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.tabstop = 2 -- Number of spaces per tab
+vim.opt.shiftwidth = 2 -- Number of spaces per indentation level
+vim.opt.expandtab = true -- Use spaces instead of tabs
+
 -- Enable mouse mode
 vim.opt.mouse = 'a'
 

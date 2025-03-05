@@ -40,6 +40,13 @@ return {
         end,
         desc = 'Find Buffers (fzf-lua)',
       },
+      {
+        '<leader>fg',
+        function()
+          require('fzf-lua').git_status()
+        end,
+        desc = '[F]ind [G]it Files',
+      },
     },
   },
 }
