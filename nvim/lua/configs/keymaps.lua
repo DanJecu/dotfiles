@@ -52,3 +52,5 @@ vim.keymap.set('n', '<leader>cp', function()
   vim.fn.setreg('+', result) -- Copy to system clipboard
   print('Copied: ' .. result)
 end, { desc = 'Copy relative file path with line number' })
+
+vim.keymap.set('n', '<leader>gc', ':GitBlameOpenCommitURL<CR>', { desc = '[G]it Open [C]ommit URL' })

@@ -6,27 +6,6 @@ return {
       require('Comment').setup()
     end,
   },
-  -- LazyGit
-  {
-    'kdheepak/lazygit.nvim',
-    lazy = true,
-    cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    },
-  },
   -- Autopairs
   {
     'windwp/nvim-autopairs',
@@ -77,5 +56,33 @@ return {
         desc = 'Quickfix List (Trouble)',
       },
     },
+  },
+  -- Git Blame plugin configuration
+  {
+    'f-person/git-blame.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    config = function()
+      vim.g.gitblame_display_virtual_text = 0
+      vim.g.gitblame_message_template = '<author> • <date>'
+      vim.g.gitblame_date_format = '%r' -- relative time format
+    end,
+  },
+  -- Lualine Configuration
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      local git_blame = require 'gitblame'
+      require('lualine').setup {
+        sections = {
+          lualine_x = {
+            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+          },
+        },
+      }
+    end,
   },
 }
