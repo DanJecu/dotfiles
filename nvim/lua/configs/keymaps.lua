@@ -22,7 +22,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<S-h>', '<cmd>bprevious<cr>', { desc = 'Prev Buffer' })
 vim.keymap.set('n', '<S-l>', '<cmd>bnext<cr>', { desc = 'Next Buffer' })
 vim.keymap.set('n', '<leader>bd', ':bd<CR>', { desc = 'Delete Buffer' })
-vim.keymap.set('n', '<leader>bD', '<cmd>:bd<cr>', { desc = 'Delete Buffer and Window' })
+vim.keymap.set('n', '<leader>wd', '<cmd>only<cr>', { desc = 'Close all other windows' })
+vim.keymap.set('n', '<leader>bw', '<cmd>:bd<cr>', { desc = 'Delete Buffer and Window' })
+vim.keymap.set('n', '<leader>bD', '<cmd>%bd|e#|bd#<cr>', { desc = 'Close all buffers except current' })
 
 -- Move selected lines
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
@@ -54,3 +56,4 @@ vim.keymap.set('n', '<leader>cp', function()
 end, { desc = 'Copy relative file path with line number' })
 
 vim.keymap.set('n', '<leader>gc', ':GitBlameOpenCommitURL<CR>', { desc = '[G]it Open [C]ommit URL' })
+vim.keymap.set('n', '<leader>cd', vim.diagnostic.open_float, { noremap = true, silent = true, desc = 'Hover Diagnostics' })

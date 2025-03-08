@@ -6,11 +6,11 @@ return {
       winopts = {
         preview = { layout = 'vertical' },
       },
-      defaults = {
-        cmd = 'fd --type f --exclude node_modules --exclude .nx',
+      files = {
+        cmd = 'fd --type f --hidden --exclude node_modules --exclude .nx',
         formatter = 'path.filename_first',
         cwd_prompt = false,
-        hidden = false,
+        hidden = true,
       },
       keymap = {
         fzf = {
@@ -27,6 +27,13 @@ return {
         desc = 'Live Grep (fzf-lua)',
       },
       {
+        '<leader>fq',
+        function()
+          require('fzf-lua').grep_quickfix()
+        end,
+        desc = '[F]ind [Q]uickfix',
+      },
+      {
         '<C-p>',
         function()
           require('fzf-lua').files()
@@ -41,20 +48,6 @@ return {
         desc = '[F]ind Buffers',
       },
       {
-        '<leader>fw',
-        function()
-          require('fzf-lua').grep_cWORD()
-        end,
-        desc = '[F]ind [W]ord',
-      },
-      {
-        '<leader>fg',
-        function()
-          require('fzf-lua').git_status()
-        end,
-        desc = '[F]ind [G]it Files',
-      },
-      {
         '<leader>gh',
         function()
           require('fzf-lua').git_stash()
@@ -62,11 +55,11 @@ return {
         desc = '[G]it Stas[h]',
       },
       {
-        '<leader>fg',
+        '<leader>fm',
         function()
-          require('fzf-lua').git_status()
+          require('fzf-lua').marks()
         end,
-        desc = '[F]ind [G]it Files',
+        desc = '[F]ind [M]arks',
       },
       {
         '<leader>fw',
