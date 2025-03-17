@@ -1,4 +1,4 @@
-theme = "nordfox"
+theme = dark:nordfox,light:dayfox
 
 font-size = 15
 font-feature = -calt

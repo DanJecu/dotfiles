@@ -1,3 +1,18 @@
+function AutoColorscheme()
+  local hour = tonumber(os.date("%H"))
+  local theme = (hour >= 7 and hour < 18) and "dayfox" or "nordfox"
+
+  -- Apply colorscheme
+  vim.cmd("colorscheme " .. theme)
+
+  -- Update LazyVim config (optional)
+  vim.g.colors_name = theme
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = AutoColorscheme,
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
