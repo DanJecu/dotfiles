@@ -17,3 +17,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 -- Window management
 vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>s", ":split<CR>", { noremap = true, silent = true })
+
+-- Select all
+vim.keymap.set("n", "<C-a>", "gg<S-v>G")
