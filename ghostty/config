@@ -1,8 +1,8 @@
-
 font-size = 15
 font-feature = -calt
 font-feature = -dlig
 font-feature = -liga
+
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
@@ -13,9 +13,16 @@ keybind = cmd+a>j=goto_split:bottom
 keybind = cmd+a>h=goto_split:left
 keybind = cmd+a>x=close_surface
 
+keybind = cmd+shift+k=resize_split:up,10
+keybind = cmd+shift+j=resize_split:down,10
+keybind = cmd+shift+h=resize_split:left,10
+keybind = cmd+shift+l=resize_split:right,10
+
 keybind = global:alt+ctrl+s=toggle_quick_terminal
 
 unfocused-split-opacity = 0.8
+unfocused-split-fill = #737070
+
 window-theme = auto
 window-padding-x = 20
 
