@@ -15,6 +15,12 @@ return {
           globalstatus = true,
         },
         sections = {
+          lualine_c = {
+            {
+              "filename",
+              path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+            },
+          },
           lualine_x = {
             { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
           },
