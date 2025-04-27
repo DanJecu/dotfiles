@@ -1,43 +1,103 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = { "http", "graphql" },
-    },
-  },
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      local git_blame = require("gitblame")
-      require("lualine").setup({
-        options = {
-          globalstatus = true,
-        },
-        sections = {
-          lualine_c = {
-            {
-              "filename",
-              path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
-            },
-          },
-          lualine_x = {
-            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-          },
-        },
-      })
-    end,
-  },
-  {
-    "f-person/git-blame.nvim",
-    lazy = false,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    config = function()
-      vim.g.gitblame_display_virtual_text = 0
-      vim.g.gitblame_message_template = "<author> • <date>"
-      vim.g.gitblame_date_format = "%r" -- relative time format
-    end,
-  },
+	{ -- Find files
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			winopts = {
+				preview = { layout = "vertical" },
+			},
+			files = {
+				cmd = "fd --type f --hidden --exclude node_modules --exclude .nx",
+				formatter = "path.filename_first",
+				cwd_prompt = false,
+				hidden = true,
+			},
+			keymap = {
+				fzf = {
+					["ctrl-l"] = "select-all+accept",
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>/",
+				function()
+					require("fzf-lua").live_grep()
+				end,
+				desc = "Live Grep (fzf-lua)",
+			},
+			{
+				"<leader>fq",
+				function()
+					require("fzf-lua").grep_quickfix()
+				end,
+				desc = "[F]ind [Q]uickfix",
+			},
+			{
+				"<C-p>",
+				function()
+					require("fzf-lua").files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader><leader>",
+				function()
+					require("fzf-lua").buffers()
+				end,
+				desc = "[F]ind Open Buffers",
+			},
+			{
+				"<leader>gh",
+				function()
+					require("fzf-lua").git_stash()
+				end,
+				desc = "[G]it Stas[h]",
+			},
+			{
+				"<leader>fm",
+				function()
+					require("fzf-lua").marks()
+				end,
+				desc = "[F]ind [M]arks",
+			},
+			{
+				"<leader>fw",
+				function()
+					require("fzf-lua").grep_cWORD()
+				end,
+				desc = "[F]ind [W]ord",
+			},
+		},
+	},
+	{ -- Autoformat
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				mode = "",
+				desc = "[C]ode [F]ormat Buffer",
+			},
+		},
+		opts = {
+			notify_on_error = false,
+			format_on_save = {
+				-- I recommend these options. See :help conform.format for details.
+				lsp_format = "fallback",
+				timeout_ms = 500,
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				-- javascript = { 'prettierd', 'prettier', stop_after_first = true },
+				-- typescript = { 'prettierd', 'prettier', stop_after_first = true },
+				-- javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+				-- typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+			},
+		},
+	},
 }
