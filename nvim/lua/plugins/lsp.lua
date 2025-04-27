@@ -84,12 +84,6 @@ return {
 					-- Code actions
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
-					-- Rename
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-
-					-- Goto declaration
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client
 					---@param method vim.lsp.protocol.Method

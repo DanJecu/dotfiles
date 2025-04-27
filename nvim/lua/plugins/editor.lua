@@ -7,7 +7,7 @@ return {
 				preview = { layout = "vertical" },
 			},
 			files = {
-				cmd = "fd --type f --hidden --exclude node_modules --exclude .nx",
+				cmd = "fd --type f --hidden --exclude node_modules --exclude .nx --exclude .git",
 				formatter = "path.filename_first",
 				cwd_prompt = false,
 				hidden = true,

@@ -59,4 +59,3 @@ vim.g.lazygit_config_file_path = {
 	-- vim.fn.expand("~/.config/lazygit/config.yml"),
 	vim.fn.expand("~/.config/lazygit/config.nvim.yml"),
 }
-vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>", { noremap = true, silent = true })
