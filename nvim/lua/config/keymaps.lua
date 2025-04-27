@@ -42,9 +42,21 @@ vim.keymap.set("n", "<leader>cp", function()
 	print("Copied: " .. result)
 end, { desc = "Copy relative file path with line number" })
 
+-- Open commit url
+vim.keymap.set("n", "<leader>gc", ":GitBlameOpenCommitURL<CR>", { desc = "[G]it Open [C]ommit URL" })
+
+-- Open diagnostic float
 vim.keymap.set(
 	"n",
 	"<leader>cd",
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Hover Diagnostics" }
 )
+
+-- Lazygit
+vim.g.lazygit_use_custom_config_file_path = 1
+vim.g.lazygit_config_file_path = {
+	-- vim.fn.expand("~/.config/lazygit/config.yml"),
+	vim.fn.expand("~/.config/lazygit/config.nvim.yml"),
+}
+vim.keymap.set("n", "<leader>lg", ":LazyGit<CR>", { noremap = true, silent = true })
