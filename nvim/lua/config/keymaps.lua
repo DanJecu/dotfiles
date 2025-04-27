@@ -22,3 +22,6 @@ vim.api.nvim_set_keymap("n", "<leader>s", ":split<CR>", { noremap = true, silent
 
 -- Select all
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
+
+-- Open commit url
+vim.keymap.set("n", "<leader>gc", ":GitBlameOpenCommitURL<CR>", { desc = "[G]it Open [C]ommit URL" })
