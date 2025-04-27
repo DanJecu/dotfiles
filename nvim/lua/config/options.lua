@@ -1,45 +1,38 @@
 -- Set space as leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
--- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = true
-
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Make line numbers default and relative
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 2 -- Number of spaces per tab
-vim.opt.shiftwidth = 2 -- Number of spaces per indentation level
-vim.opt.expandtab = true -- Use spaces instead of tabs
-
--- Enable mouse mode
-vim.opt.mouse = 'a'
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+	vim.opt.clipboard = "unnamedplus"
+end)
 
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
--- Sync clipboard between OS and Neovim.
-vim.schedule(function()
-  vim.opt.clipboard = 'unnamedplus'
-end)
+-- Enable mouse mode
+vim.opt.mouse = "a"
 
--- Enable break indent
+-- Enable wrapped lines to be indented
 vim.opt.breakindent = true
+
+-- Wrap long lines instead of cutting them off
+vim.opt.wrap = true
 
 -- Save undo history
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv 'HOME' .. '/.vim/undodir'
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 
 -- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 
 -- Decrease update time
 vim.opt.updatetime = 250
@@ -52,16 +45,19 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
---  See `:help 'list'`
---  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 
 -- Preview substitutions live, as you type!
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Set tabs and indentation to 2 spaces.
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true

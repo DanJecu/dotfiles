@@ -1,150 +1,320 @@
 return {
-  -- Comment with "gc" for block and "gcc" for a line
-  {
-    'numToStr/Comment.nvim',
-    config = function()
-      require('Comment').setup()
-    end,
-  },
-  -- Autopairs
-  {
-    'windwp/nvim-autopairs',
-    event = 'InsertEnter',
-    -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
-    config = function()
-      require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-    end,
-  },
-  {
-    'folke/trouble.nvim',
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
-    cmd = 'Trouble',
-    keys = {
-      {
-        '<leader>xx',
-        '<cmd>Trouble diagnostics toggle<cr>',
-        desc = 'Diagnostics (Trouble)',
-      },
-      {
-        '<leader>xX',
-        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
-        desc = 'Buffer Diagnostics (Trouble)',
-      },
-      {
-        '<leader>cs',
-        '<cmd>Trouble symbols toggle focus=false<cr>',
-        desc = 'Symbols (Trouble)',
-      },
-      {
-        '<leader>cl',
-        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
-        desc = 'LSP Definitions / references / ... (Trouble)',
-      },
-      {
-        '<leader>xL',
-        '<cmd>Trouble loclist toggle<cr>',
-        desc = 'Location List (Trouble)',
-      },
-      {
-        '<leader>xQ',
-        '<cmd>Trouble qflist toggle<cr>',
-        desc = 'Quickfix List (Trouble)',
-      },
-    },
-  },
-  -- Git Blame plugin configuration
-  {
-    'f-person/git-blame.nvim',
-    lazy = false,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    config = function()
-      vim.g.gitblame_display_virtual_text = 0
-      vim.g.gitblame_message_template = '<author> • <date>'
-      vim.g.gitblame_date_format = '%r' -- relative time format
-    end,
-  },
-  -- Lualine Configuration
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      local git_blame = require 'gitblame'
-      require('lualine').setup {
-        options = {
-          globalstatus = true,
-        },
-        sections = {
-          lualine_x = {
-            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-          },
-        },
-      }
-    end,
-  },
-  {
-    'akinsho/bufferline.nvim',
-    version = '*',
-    dependencies = 'nvim-tree/nvim-web-devicons',
-    config = function()
-      vim.opt.termguicolors = true
-      require('bufferline').setup {}
-    end,
-  },
-  {
-    'kdheepak/lazygit.nvim',
-    lazy = true,
-    cmd = {
-      'LazyGit',
-      'LazyGitConfig',
-      'LazyGitCurrentFile',
-      'LazyGitFilter',
-      'LazyGitFilterCurrentFile',
-    },
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-    keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    },
-    config = function()
-      -- Override LazyGit settings
-      vim.g.lazygit_config = {
-        -- Custom edit commands to use Neovim's remote capabilities
-        edit = "nvim --server $NVIM --remote-send '<cmd>close<cr><cmd>lua EditFromLazygit([[{{filename}}]])<CR>'",
-        editAtLine = "nvim --server $NVIM --remote-send '<cmd>close<CR><cmd>lua EditLineFromLazygit([[{{filename}}]],{{line}})<CR>'",
-      }
+	{ -- Find files
+		"ibhagwan/fzf-lua",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			winopts = {
+				preview = { layout = "vertical" },
+			},
+			files = {
+				cmd = "fd --type f --hidden --exclude node_modules --exclude .nx",
+				formatter = "path.filename_first",
+				cwd_prompt = false,
+				hidden = true,
+			},
+			keymap = {
+				fzf = {
+					["ctrl-l"] = "select-all+accept",
+				},
+			},
+		},
+		keys = {
+			{
+				"<leader>/",
+				function()
+					require("fzf-lua").live_grep()
+				end,
+				desc = "Live Grep (fzf-lua)",
+			},
+			{
+				"<leader>fq",
+				function()
+					require("fzf-lua").grep_quickfix()
+				end,
+				desc = "[F]ind [Q]uickfix",
+			},
+			{
+				"<C-p>",
+				function()
+					require("fzf-lua").files()
+				end,
+				desc = "Find Files",
+			},
+			{
+				"<leader><leader>",
+				function()
+					require("fzf-lua").buffers()
+				end,
+				desc = "[F]ind Open Buffers",
+			},
+			{
+				"<leader>gh",
+				function()
+					require("fzf-lua").git_stash()
+				end,
+				desc = "[G]it Stas[h]",
+			},
+			{
+				"<leader>fm",
+				function()
+					require("fzf-lua").marks()
+				end,
+				desc = "[F]ind [M]arks",
+			},
+			{
+				"<leader>fw",
+				function()
+					require("fzf-lua").grep_cWORD()
+				end,
+				desc = "[F]ind [W]ord",
+			},
+		},
+	},
+	{ -- Autoformat
+		"stevearc/conform.nvim",
+		event = { "BufWritePre" },
+		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>cf",
+				function()
+					require("conform").format({ async = true, lsp_format = "fallback" })
+				end,
+				mode = "",
+				desc = "[C]ode [F]ormat Buffer",
+			},
+		},
+		opts = {
+			notify_on_error = false,
+			format_on_save = {
+				-- I recommend these options. See :help conform.format for details.
+				lsp_format = "fallback",
+				timeout_ms = 500,
+			},
+			formatters_by_ft = {
+				lua = { "stylua" },
+				javascript = { "prettierd", "prettier", stop_after_first = true },
+				typescript = { "prettierd", "prettier", stop_after_first = true },
+				javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+				typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+			},
+		},
+	},
+	{ -- Linting
+		"mfussenegger/nvim-lint",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
+				markdown = { "markdownlint" },
+				javascript = { "eslint" },
+				typescript = { "eslint" },
+				javascriptreact = { "eslint" },
+				typescriptreact = { "eslint" },
+			}
 
-      -- Define the Lua functions for handling the edits
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'LazyVimStarted',
-        callback = function()
-          -- Function to edit a file at a specific line
-          _G.EditLineFromLazygit = function(file_path, line)
-            local current_path = vim.fn.expand '%:p'
-            if current_path == file_path then
-              vim.cmd(tostring(line))
-            else
-              vim.cmd('e ' .. file_path)
-              vim.cmd(tostring(line))
-            end
-          end
+			-- Create autocommand which carries out the actual linting
+			-- on the specified events.
+			local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
-          -- Function to edit a file without a specific line
-          _G.EditFromLazygit = function(file_path)
-            local current_path = vim.fn.expand '%:p'
-            if current_path ~= file_path then
-              vim.cmd('e ' .. file_path)
-            end
-          end
-        end,
-      })
-    end,
-  },
+			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+				group = lint_augroup,
+				callback = function()
+					-- Only run the linter in buffers that you can modify in order to
+					-- avoid superfluous noise, notably within the handy LSP pop-ups that
+					-- describe the hovered symbol using Markdown.
+					if vim.opt_local.modifiable:get() then
+						lint.try_lint()
+					end
+				end,
+			})
+		end,
+	},
+	{ -- Autocompletion
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			-- Snippet Engine & its associated nvim-cmp source
+			{
+				"L3MON4D3/LuaSnip",
+				build = (function()
+					-- Build Step is needed for regex support in snippets.
+					-- This step is not supported in many windows environments.
+					-- Remove the below condition to re-enable on windows.
+					if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
+						return
+					end
+					return "make install_jsregexp"
+				end)(),
+				dependencies = {
+					-- `friendly-snippets` contains a variety of premade snippets.
+					--    See the README about individual language/framework/plugin snippets:
+					--    https://github.com/rafamadriz/friendly-snippets
+					-- {
+					--   'rafamadriz/friendly-snippets',
+					--   config = function()
+					--     require('luasnip.loaders.from_vscode').lazy_load()
+					--   end,
+					-- },
+				},
+			},
+			"saadparwaiz1/cmp_luasnip",
+
+			-- Adds other completion capabilities.
+			--  nvim-cmp does not ship with all sources by default. They are split
+			--  into multiple repos for maintenance purposes.
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+		},
+		config = function()
+			-- See `:help cmp`
+			local cmp = require("cmp")
+			local luasnip = require("luasnip")
+			luasnip.config.setup({})
+
+			cmp.setup({
+				snippet = {
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
+				},
+				completion = { completeopt = "menu,menuone,noinsert" },
+
+				-- For an understanding of why these mappings were
+				-- chosen, you will need to read `:help ins-completion`
+				--
+				-- No, but seriously. Please read `:help ins-completion`, it is really good!
+				mapping = cmp.mapping.preset.insert({
+					-- Select the [n]ext item
+					["<C-n>"] = cmp.mapping.select_next_item(),
+					-- -- Select the [p]revious item
+					["<C-p>"] = cmp.mapping.select_prev_item(),
+					--
+					-- Scroll the documentation window [b]ack / [f]orward
+					["<C-b>"] = cmp.mapping.scroll_docs(-4),
+					["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+					-- Accept ([y]es) the completion.
+					--  This will auto-import if your LSP supports it.
+					--  This will expand snippets if the LSP sent a snippet.
+					["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+					-- If you prefer more traditional completion keymaps,
+					-- you can uncomment the following lines
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					-- ['<Tab>'] = cmp.mapping.select_next_item(),
+					-- ['<S-Tab>'] = cmp.mapping.select_prev_item(),
+
+					-- Manually trigger a completion from nvim-cmp.
+					--  Generally you don't need this, because nvim-cmp will display
+					--  completions whenever it has completion options available.
+					["<C-Space>"] = cmp.mapping.complete({}),
+
+					-- Think of <c-l> as moving to the right of your snippet expansion.
+					--  So if you have a snippet that's like:
+					--  function $name($args)
+					--    $body
+					--  end
+					--
+					-- <c-l> will move you to the right of each of the expansion locations.
+					-- <c-h> is similar, except moving you backwards.
+					["<C-l>"] = cmp.mapping(function()
+						if luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
+						end
+					end, { "i", "s" }),
+					["<C-h>"] = cmp.mapping(function()
+						if luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						end
+					end, { "i", "s" }),
+
+					-- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
+					--    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
+				}),
+				sources = {
+					{
+						name = "lazydev",
+						-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
+						group_index = 0,
+					},
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+					{ name = "path" },
+					{ name = "nvim_lsp_signature_help" },
+				},
+			})
+		end,
+	},
+	{ -- Highlight, edit, and navigate code
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		opts = {
+			ensure_installed = {
+				"bash",
+				"c",
+				"diff",
+				"html",
+				"lua",
+				"luadoc",
+				"markdown",
+				"markdown_inline",
+				"query",
+				"vim",
+				"vimdoc",
+			},
+			auto_install = true,
+			highlight = {
+				enable = true,
+				additional_vim_regex_highlighting = { "ruby" },
+			},
+			indent = { enable = true, disable = { "ruby" } },
+		},
+	},
+	-- Comment with "gc" for block and "gcc" for a line
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("Comment").setup()
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>xx",
+				"<cmd>Trouble diagnostics toggle<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>xX",
+				"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+				desc = "Buffer Diagnostics (Trouble)",
+			},
+			{
+				"<leader>cs",
+				"<cmd>Trouble symbols toggle focus=false<cr>",
+				desc = "Symbols (Trouble)",
+			},
+			{
+				"<leader>cl",
+				"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+				desc = "LSP Definitions / references / ... (Trouble)",
+			},
+			{
+				"<leader>xL",
+				"<cmd>Trouble loclist toggle<cr>",
+				desc = "Location List (Trouble)",
+			},
+			{
+				"<leader>xQ",
+				"<cmd>Trouble qflist toggle<cr>",
+				desc = "Quickfix List (Trouble)",
+			},
+		},
+	},
 }
