@@ -317,4 +317,17 @@ return {
 			},
 		},
 	},
+
+	{
+		"echasnovski/mini.files",
+		version = "*",
+		config = function()
+			require("mini.files").setup({
+				options = { use_as_default_explorer = true },
+			})
+			vim.keymap.set("n", "<leader>pe", function()
+				require("mini.files").open()
+			end, { desc = "Open MiniFiles" })
+		end,
+	},
 }
