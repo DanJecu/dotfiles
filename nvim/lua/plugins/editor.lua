@@ -317,8 +317,7 @@ return {
 			},
 		},
 	},
-
-	{
+	{ -- Explorer
 		"echasnovski/mini.files",
 		version = "*",
 		config = function()
@@ -328,6 +327,16 @@ return {
 			vim.keymap.set("n", "<leader>pe", function()
 				require("mini.files").open()
 			end, { desc = "Open MiniFiles" })
+		end,
+	},
+
+	{ -- Auto-close brackets, parentheses, quotes, etc.
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("nvim-autopairs").setup({
+				check_ts = true, -- enables Treesitter integration
+			})
 		end,
 	},
 }
