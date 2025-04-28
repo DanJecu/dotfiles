@@ -1,3 +1,13 @@
+local function search_result()
+	if vim.v.hlsearch == 1 then
+		local result = vim.fn.searchcount({ maxcount = 999, timeout = 500 })
+		if result.total > 0 then
+			return string.format("[%d/%d]", result.current, result.total)
+		end
+	end
+	return ""
+end
+
 return {
 	{
 		"navarasu/onedark.nvim",
@@ -48,6 +58,7 @@ return {
 							"filename",
 							path = 1,
 						},
+						{ "searchcount", maxcount = 999999 },
 					},
 					lualine_x = {
 						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
