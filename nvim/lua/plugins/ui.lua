@@ -1,13 +1,3 @@
-local function search_result()
-	if vim.v.hlsearch == 1 then
-		local result = vim.fn.searchcount({ maxcount = 999, timeout = 500 })
-		if result.total > 0 then
-			return string.format("[%d/%d]", result.current, result.total)
-		end
-	end
-	return ""
-end
-
 return {
 	{
 		"navarasu/onedark.nvim",
@@ -17,7 +7,8 @@ return {
 			vim.cmd([[colorscheme onedark]])
 		end,
 	},
-	{ -- git related signs to the gutter, as well as utilities for managing changes
+	{
+		-- Git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
@@ -27,9 +18,17 @@ return {
 				topdelete = { text = "‾" },
 				changedelete = { text = "~" },
 			},
+			on_attach = function(bufnr)
+				vim.keymap.set("n", "]h", function()
+					require("gitsigns").nav_hunk("next")
+				end, { buffer = bufnr, desc = "Next Git Hunk" })
+
+				vim.keymap.set("n", "[h", function()
+					require("gitsigns").nav_hunk("prev")
+				end, { buffer = bufnr, desc = "Previous Git Hunk" })
+			end,
 		},
 	},
-	-- Git Blame plugin configuration
 	{
 		"f-person/git-blame.nvim",
 		lazy = false,
@@ -42,12 +41,16 @@ return {
 			vim.g.gitblame_date_format = "%r" -- relative time format
 		end,
 	},
-	-- Lualine Configuration
-	{
+	{ -- Lualine Configuration
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+			"SmiteshP/nvim-navic", -- Make sure navic is loaded
+		},
 		config = function()
 			local git_blame = require("gitblame")
+			local navic = require("nvim-navic")
+
 			require("lualine").setup({
 				options = {
 					globalstatus = true,
@@ -57,6 +60,14 @@ return {
 						{
 							"filename",
 							path = 1,
+						},
+						{
+							function()
+								return navic.is_available() and navic.get_location() or ""
+							end,
+							cond = function()
+								return package.loaded["nvim-navic"] and navic.is_available()
+							end,
 						},
 						{ "searchcount", maxcount = 999999 },
 					},

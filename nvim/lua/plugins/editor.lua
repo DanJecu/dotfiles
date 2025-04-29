@@ -179,7 +179,7 @@ return {
 						luasnip.lsp_expand(args.body)
 					end,
 				},
-				completion = { completeopt = "menu,menuone,noinsert" },
+				completion = { completeopt = "menu,menuone" },
 
 				-- For an understanding of why these mappings were
 				-- chosen, you will need to read `:help ins-completion`
@@ -209,7 +209,7 @@ return {
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
 					--  completions whenever it has completion options available.
-					["<C-Space>"] = cmp.mapping.complete({}),
+					["<C-x><C-o>"] = cmp.mapping.complete({}),
 
 					-- Think of <c-l> as moving to the right of your snippet expansion.
 					--  So if you have a snippet that's like:
@@ -254,7 +254,6 @@ return {
 		opts = {
 			ensure_installed = {
 				"bash",
-				"c",
 				"diff",
 				"html",
 				"lua",
@@ -264,6 +263,8 @@ return {
 				"query",
 				"vim",
 				"vimdoc",
+				"graphql",
+				"json",
 			},
 			auto_install = true,
 			highlight = {
@@ -273,8 +274,7 @@ return {
 			indent = { enable = true, disable = { "ruby" } },
 		},
 	},
-	-- Comment with "gc" for block and "gcc" for a line
-	{
+	{ -- Comment with "gc" for block and "gcc" for a line
 		"numToStr/Comment.nvim",
 		config = function()
 			require("Comment").setup()
@@ -317,19 +317,26 @@ return {
 			},
 		},
 	},
-	{ -- Explorer
+	{
+		-- Explorer
 		"echasnovski/mini.files",
 		version = "*",
 		config = function()
-			require("mini.files").setup({
+			local MiniFiles = require("mini.files")
+			MiniFiles.setup({
 				options = { use_as_default_explorer = true },
 			})
+
 			vim.keymap.set("n", "<leader>pe", function()
+				MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
+				MiniFiles.reveal_cwd()
+			end, { desc = "Open MiniFiles at current file's directory" })
+
+			vim.keymap.set("n", "<leader>pE", function()
 				require("mini.files").open()
 			end, { desc = "Open MiniFiles" })
 		end,
 	},
-
 	{ -- Auto-close brackets, parentheses, quotes, etc.
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -337,6 +344,30 @@ return {
 			require("nvim-autopairs").setup({
 				check_ts = true, -- enables Treesitter integration
 			})
+		end,
+	},
+	{
+		"SmiteshP/nvim-navic",
+		lazy = true,
+		init = function()
+			vim.g.navic_silence = true
+			vim.api.nvim_create_autocmd("LspAttach", {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					local bufnr = args.buf
+					if client and client.server_capabilities.documentSymbolProvider then
+						require("nvim-navic").attach(client, bufnr)
+					end
+				end,
+			})
+		end,
+		opts = function()
+			return {
+				separator = " » ",
+				highlight = true,
+				depth_limit = 5,
+				lazy_update_context = true,
+			}
 		end,
 	},
 }
