@@ -69,7 +69,6 @@ return {
 								return package.loaded["nvim-navic"] and navic.is_available()
 							end,
 						},
-						{ "searchcount", maxcount = 999999 },
 					},
 					lualine_x = {
 						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },

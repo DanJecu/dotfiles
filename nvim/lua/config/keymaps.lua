@@ -22,9 +22,9 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete Buffer" })
-vim.keymap.set("n", "<leader>wd", "<cmd>only<cr>", { desc = "Close all other windows" })
-vim.keymap.set("n", "<leader>bw", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 vim.keymap.set("n", "<leader>bD", "<cmd>%bd|e#|bd#<cr>", { desc = "Close all buffers except current" })
+vim.keymap.set("n", "<leader>wD", "<cmd>only<cr>", { desc = "Close all other windows" })
+vim.keymap.set("n", "<leader>wd", "<cmd>close<cr>", { desc = "Close window" })
 
 -- Move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
