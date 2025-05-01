@@ -8,8 +8,8 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open Explorer" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Window management
-vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>s", ":split<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true, desc = "Vertical Split" })
+vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal Split" })
 vim.api.nvim_set_keymap("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true })
 
 -- Keybinds to make split navigation easier.
