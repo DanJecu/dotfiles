@@ -1,5 +1,5 @@
 return {
-	{
+	{ -- colorscheme
 		"navarasu/onedark.nvim",
 		lazy = false,
 		priority = 1000,
@@ -7,8 +7,7 @@ return {
 			vim.cmd([[colorscheme onedark]])
 		end,
 	},
-	{
-		-- Git related signs to the gutter, as well as utilities for managing changes
+	{ -- git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
@@ -83,5 +82,18 @@ return {
 		-- See `:help ibl`
 		main = "ibl",
 		opts = {},
+	},
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			options = {
+				mode = "tabs",
+				-- separator_style = "slant",
+				show_buffer_close_icons = false,
+				show_close_icon = false,
+			},
+		},
 	},
 }

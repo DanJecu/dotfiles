@@ -371,15 +371,39 @@ return {
 		end,
 	},
 	{
+		"github/copilot.vim",
+		lazy = false,
+		config = function()
+			vim.g.copilot_enabled = 0
+
+			vim.keymap.set("n", "<leader>ct", function()
+				local status = vim.fn["copilot#Enabled"]()
+				if status == 1 then
+					vim.cmd("Copilot disable")
+					print("Copilot disabled")
+				else
+					vim.cmd("Copilot enable")
+					print("Copilot enabled")
+				end
+			end, { desc = "Toggle Copilot" })
+		end,
+	},
+	{
 		"CopilotC-Nvim/CopilotChat.nvim",
 		dependencies = {
 			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
 			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
 		},
 		build = "make tiktoken", -- Only on MacOS or Linux
-		opts = {
-			-- See Configuration section for options
+		opts = {},
+		keys = {
+			{ "<leader>co", ":CopilotChatOpen<CR>", mode = "n", desc = "Open Copilot Chat" },
+			{ "<leader>cc", ":CopilotChatClose<CR>", mode = "n", desc = "Close Copilot Chat" },
+			{ "<leader>cf", ":CopilotChatFix<CR>", mode = "n", desc = "Fix Code with Copilot" },
+			{ "<leader>ce", ":CopilotChatExplain<CR>", mode = "n", desc = "Explain Code with Copilot" },
+
+			{ "<leader>cf", ":CopilotChatFix<CR>", mode = "v", desc = "Fix Selection with Copilot" },
+			{ "<leader>ce", ":CopilotChatExplain<CR>", mode = "v", desc = "Explain Selection with Copilot" },
 		},
-		-- See Commands section for default commands if you want to lazy load on them
 	},
 }

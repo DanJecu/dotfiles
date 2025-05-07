@@ -61,3 +61,6 @@ vim.opt.scrolloff = 10
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
+
+-- Show tabs
+-- vim.opt.showtabline = 2

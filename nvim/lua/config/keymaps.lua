@@ -12,6 +12,11 @@ vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal Split" })
 vim.api.nvim_set_keymap("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true })
 
+-- Tab management
+vim.keymap.set("n", "te", ":tabedit")
+vim.keymap.set("n", "<tab>", ":tabnext<Return>", { noremap = true, silent = true })
+vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { noremap = true, silent = true })
+
 -- Keybinds to make split navigation easier.
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
@@ -21,7 +26,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 -- Buffers navigation & management
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-vim.keymap.set("n", "<leader>bd", ":bd<CR>", { desc = "Delete Buffer" })
+vim.keymap.set("n", "<leader>bd", ":bnext | bdelete #<CR>", { desc = "Delete buffer but keep window" })
 vim.keymap.set("n", "<leader>bD", "<cmd>%bd|e#|bd#<cr>", { desc = "Close all buffers except current" })
 vim.keymap.set("n", "<leader>wD", "<cmd>only<cr>", { desc = "Close all other windows" })
 vim.keymap.set("n", "<leader>wd", "<cmd>close<cr>", { desc = "Close window" })
@@ -31,7 +36,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Don't copy when pasting over selection
-vim.keymap.set("v", "p", '"_dP')
+vim.keymap.set("x", "p", [["_dP]], { desc = "Paste without overwriting clipboard" })
 
 -- Copy relative path and line numeber on cursor
 vim.keymap.set("n", "<leader>cp", function()
