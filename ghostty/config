@@ -1,9 +1,6 @@
 font-size = 15
-font-feature = -calt
-font-feature = -dlig
-font-feature = -liga
-
-
+background-opacity = 0.9
+background-blur = 1
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
 
