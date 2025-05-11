@@ -20,6 +20,13 @@ return {
 		},
 		keys = {
 			{
+				"<leader>fs",
+				function()
+					require("fzf-lua").lsp_document_symbols()
+				end,
+				desc = "Show symbols in current file",
+			},
+			{
 				"<leader>/",
 				function()
 					require("fzf-lua").live_grep()
@@ -251,6 +258,11 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs", -- Sets main module to use for opts
+		dependencies = {
+			{
+				"nvim-treesitter/nvim-treesitter-textobjects",
+			},
+		},
 		opts = {
 			ensure_installed = {
 				"bash",
@@ -272,6 +284,18 @@ return {
 				additional_vim_regex_highlighting = { "ruby" },
 			},
 			indent = { enable = true, disable = { "ruby" } },
+			textobjects = {
+				move = {
+					enable = true,
+					set_jumps = true,
+					goto_next_start = {
+						["]m"] = "@function.outer",
+					},
+					goto_previous_start = {
+						["[m"] = "@function.outer",
+					},
+				},
+			},
 		},
 	},
 	{ -- Comment with "gc" for block and "gcc" for a line
