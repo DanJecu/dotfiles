@@ -62,5 +62,8 @@ vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
+-- Disable highlight line
+vim.opt.cursorline = false
 -- Show tabs
 -- vim.opt.showtabline = 2
+--

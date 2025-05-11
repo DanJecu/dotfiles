@@ -36,7 +36,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Don't copy when pasting over selection
-vim.keymap.set("x", "p", [["_dP]], { desc = "Paste without overwriting clipboard" })
+-- vim.keymap.set("x", "p", [["_dP]], { desc = "Paste without overwriting clipboard" })
 
 -- Copy relative path and line numeber on cursor
 vim.keymap.set("n", "<leader>cp", function()

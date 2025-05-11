@@ -1,6 +1,7 @@
 font-size = 15
-background-opacity = 0.9
-background-blur = 1
+background-opacity = 0.90
+background-blur = 40
+
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
 

@@ -6,8 +6,13 @@ return {
 		config = function()
 			require("onedark").setup({
 				transparent = true,
+				colors = {
+					-- fg = "#E5E4E2",
+					fg = "#d3d3d3",
+				},
+				highlights = {},
 			})
-			vim.cmd([[colorscheme onedark]])
+			require("onedark").load()
 		end,
 	},
 	{ -- git related signs to the gutter, as well as utilities for managing changes
