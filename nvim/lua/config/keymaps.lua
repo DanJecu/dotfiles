@@ -12,6 +12,22 @@ vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silen
 vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", { noremap = true, silent = true, desc = "Horizontal Split" })
 vim.api.nvim_set_keymap("n", "<leader>wd", ":close<CR>", { noremap = true, silent = true })
 
+-- Maximize the current vertical split
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>wm",
+	":wincmd |<CR>",
+	{ noremap = true, silent = true, desc = "Maximize current vertical split" }
+)
+
+-- Restore all splits to equal size
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>we",
+	":wincmd =<CR>",
+	{ noremap = true, silent = true, desc = "Restore all splits to equal size" }
+)
+
 -- Tab management
 vim.keymap.set("n", "te", ":tabedit")
 vim.keymap.set("n", "<tab>", ":tabnext<Return>", { noremap = true, silent = true })
@@ -56,6 +72,13 @@ vim.keymap.set(
 	"<leader>cd",
 	vim.diagnostic.open_float,
 	{ noremap = true, silent = true, desc = "Hover Diagnostics" }
+)
+
+vim.keymap.set(
+	"n",
+	"gv",
+	"<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
+	{ desc = "Go to definition in vertical split" }
 )
 
 -- Lazygit

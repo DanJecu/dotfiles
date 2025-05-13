@@ -7,7 +7,7 @@ return {
 			require("onedark").setup({
 				transparent = true,
 				colors = {
-					fg = "#d3d3d3",
+					fg = "#c2bcba",
 				},
 				highlights = {},
 			})
