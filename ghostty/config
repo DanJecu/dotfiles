@@ -1,6 +1,11 @@
-font-size = 15
-background-opacity = 0.90
-background-blur = 40
+font-size = 10
+window-title-font-family = "JetBrains Mono"
+font-feature = -dlig
+font-feature = -liga
+font-thicken = true
+
+background-opacity = 0.85
+background-blur = 20
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down

@@ -7,9 +7,15 @@ return {
 			require("onedark").setup({
 				transparent = true,
 				colors = {
-					fg = "#c2bcba",
+					fg = "#d3d3d3",
 				},
-				highlights = {},
+				highlights = {
+					-- Brackets, parentheses, braces in banana yellow
+					["@punctuation.bracket"] = { fg = "#d3d3d3" },
+					["@punctuation.delimiter"] = { fg = "#d3d3d3" },
+					["Delimiter"] = { fg = "#d3d3d3" },
+					["MatchParen"] = { fg = "#d3d3d3", bold = true },
+				},
 			})
 			require("onedark").load()
 		end,
@@ -97,7 +103,7 @@ return {
 		opts = {
 			options = {
 				mode = "tabs",
-				-- separator_style = "slant",
+				truncate_names = false,
 				show_buffer_close_icons = false,
 				show_close_icon = false,
 			},

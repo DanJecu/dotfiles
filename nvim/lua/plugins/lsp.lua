@@ -152,7 +152,7 @@ return {
 			-- See :help vim.diagnostic.Opts
 			vim.diagnostic.config({
 				severity_sort = true,
-				float = { border = "rounded", source = "if_many" },
+				float = { border = "rounded", source = "always", focusable = true, style = "minimal" },
 				underline = { severity = vim.diagnostic.severity.ERROR },
 				signs = vim.g.have_nerd_font and {
 					text = {

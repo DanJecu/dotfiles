@@ -66,20 +66,17 @@ end, { desc = "Copy relative file path with line number" })
 -- Open commit url
 vim.keymap.set("n", "<leader>gc", ":GitBlameOpenCommitURL<CR>", { desc = "[G]it Open [C]ommit URL" })
 
--- Open diagnostic float
-vim.keymap.set(
-	"n",
-	"<leader>cd",
-	vim.diagnostic.open_float,
-	{ noremap = true, silent = true, desc = "Hover Diagnostics" }
-)
-
+vim.keymap.set("n", "<leader>cd", function()
+	vim.diagnostic.open_float(nil, { focusable = true })
+end, { desc = "Show diagnostic (focusable)" })
 vim.keymap.set(
 	"n",
 	"gv",
 	"<cmd>vsplit | lua vim.lsp.buf.definition()<CR>",
 	{ desc = "Go to definition in vertical split" }
 )
+
+vim.keymap.set("n", "<leader>qq", "<cmd>qa<CR>", { desc = "Quit all" })
 
 -- Lazygit
 vim.g.lazygit_use_custom_config_file_path = 1
