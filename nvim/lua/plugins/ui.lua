@@ -57,34 +57,77 @@ return {
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			"SmiteshP/nvim-navic", -- Make sure navic is loaded
 		},
 		config = function()
 			local git_blame = require("gitblame")
-			local navic = require("nvim-navic")
+			local filetype = { "filetype", icon_only = true }
+
+			local diagnostics = {
+				"diagnostics",
+				sources = { "nvim_diagnostic" },
+				sections = { "error", "warn", "info", "hint" },
+				symbols = {
+					error = " ",
+					hint = " ",
+					info = " ",
+					warn = " ",
+				},
+				colored = true,
+				update_in_insert = false,
+				always_visible = false,
+			}
+
+			local diff = {
+				"diff",
+				source = function()
+					local gitsigns = vim.b.gitsigns_status_dict
+					if gitsigns then
+						return {
+							added = gitsigns.added,
+							modified = gitsigns.changed,
+							removed = gitsigns.removed,
+						}
+					end
+				end,
+				symbols = {
+					added = "" .. " ",
+					modified = "" .. " ",
+					removed = "" .. " ",
+				},
+				colored = true,
+				always_visible = false,
+			}
 
 			require("lualine").setup({
 				options = {
 					globalstatus = true,
+					section_separators = {},
+					component_separators = {},
 				},
 				sections = {
+					lualine_b = {},
 					lualine_c = {
 						{
 							"filename",
 							path = 1,
 						},
-						{
-							function()
-								return navic.is_available() and navic.get_location() or ""
-							end,
-							cond = function()
-								return package.loaded["nvim-navic"] and navic.is_available()
-							end,
-						},
 					},
 					lualine_x = {
+						diff,
+						diagnostics,
+						filetype,
 						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
 					},
+				},
+				tabline = {
+					lualine_a = {
+						{
+							"buffers",
+							mode = 0,
+						},
+					},
+					lualine_x = {},
+					lualine_z = { "tabs" },
 				},
 			})
 		end,
@@ -95,18 +138,5 @@ return {
 		-- See `:help ibl`
 		main = "ibl",
 		opts = {},
-	},
-	{
-		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		opts = {
-			options = {
-				mode = "tabs",
-				truncate_names = false,
-				show_buffer_close_icons = false,
-				show_close_icon = false,
-			},
-		},
 	},
 }
