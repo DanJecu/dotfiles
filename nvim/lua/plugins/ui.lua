@@ -5,7 +5,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
-				transparent = true,
+				-- transparent = true,
 				colors = {
 					fg = "#d3d3d3",
 				},
@@ -115,7 +115,6 @@ return {
 					lualine_x = {
 						diff,
 						diagnostics,
-						filetype,
 						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
 					},
 				},

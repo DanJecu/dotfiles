@@ -435,4 +435,26 @@ return {
 			})
 		end,
 	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("todo-comments").setup()
+
+			vim.keymap.set("n", "]t", function()
+				require("todo-comments").jump_next()
+			end, { desc = "Next TODO comment" })
+
+			vim.keymap.set("n", "[t", function()
+				require("todo-comments").jump_prev()
+			end, { desc = "Previous TODO comment" })
+
+			vim.keymap.set("n", "<leader>tq", function()
+				-- Get the directory of the current file
+				local file_dir = vim.fn.expand("%:p:h")
+				-- Run TodoQuickFix limited to that directory
+				vim.cmd("TodoQuickFix cwd=" .. file_dir)
+			end, { desc = "TODOs in current file (Quickfix)" })
+		end,
+	},
 }
