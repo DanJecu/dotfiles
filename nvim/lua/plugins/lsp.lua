@@ -186,7 +186,43 @@ return {
 
 			local servers = {
 				gopls = {},
-				ts_ls = {},
+				-- ts_ls = {},
+				vtsls = {
+					refactor_auto_rename = true,
+					filetypes = {
+						"javascript",
+						"javascriptreact",
+						"javascript.jsx",
+						"typescript",
+						"typescriptreact",
+						"typescript.tsx",
+					},
+					root_dir = require("lspconfig.util").root_pattern(
+						"tsconfig.json",
+						"tsconfig.base.json",
+						"package.json",
+						".git"
+					),
+					settings = {
+						vtsls = {
+							autoUseWorkspaceTsdk = true,
+							enableMoveToFileCodeAction = true,
+						},
+						typescript = {
+							inlayHints = {
+								parameterNames = { enabled = "all" },
+								parameterTypes = { enabled = true },
+								variableTypes = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								enumMemberValues = { enabled = true },
+							},
+							suggest = {
+								completeFunctionCalls = true,
+							},
+							updateImportsOnFileMove = { enabled = "always" },
+						},
+					},
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
