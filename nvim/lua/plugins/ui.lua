@@ -5,6 +5,7 @@ return {
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
+				transparent = true,
 				colors = {
 					fg = "#d3d3d3",
 				},

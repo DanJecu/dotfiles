@@ -7,6 +7,8 @@ adjust-cell-width = -1
 adjust-cell-height = 2
 font-thicken = true
 
+background-opacity = 0.8
+background-blur = 20
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
