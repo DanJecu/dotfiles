@@ -1,5 +1,6 @@
 window-title-font-family = "Menlo"
 font-family = "Menlo"
+font-size = 17
 font-feature = -dlig
 font-feature = -liga
 font-feature = -calt
@@ -7,8 +8,8 @@ adjust-cell-width = -1
 adjust-cell-height = 2
 font-thicken = true
 
-background-opacity = 0.8
-background-blur = 20
+background-opacity = 0.87
+background-blur = 30
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down

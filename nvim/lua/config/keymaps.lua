@@ -1,6 +1,3 @@
--- Map Ctrl-A to select everything
-vim.keymap.set("n", "<C-a>", "ggVG", { desc = "Select All" })
-
 -- Open explorer
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open Explorer" })
 

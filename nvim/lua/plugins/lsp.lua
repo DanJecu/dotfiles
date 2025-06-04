@@ -24,7 +24,25 @@ return {
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 
 			-- Useful status updates for LSP.
-			{ "j-hui/fidget.nvim", opts = {} },
+			{
+				"j-hui/fidget.nvim",
+				opts = {
+					notification = {
+						window = {
+							normal_hl = "Comment", -- Base highlight group in the notification window
+							winblend = 0, -- Background color opacity in the notification window
+							border = "none", -- Border around the notification window
+							zindex = 45, -- Stacking priority of the notification window
+							max_width = 0, -- Maximum width of the notification window
+							max_height = 0, -- Maximum height of the notification window
+							x_padding = 1, -- Padding from right edge of window boundary
+							y_padding = 0, -- Padding from bottom edge of window boundary
+							align = "bottom", -- How to align the notification window
+							relative = "editor", -- What the notification window position is relative to
+						},
+					},
+				},
+			},
 
 			-- Allows extra capabilities provided by nvim-cmp
 			"hrsh7th/cmp-nvim-lsp",
@@ -54,6 +72,8 @@ return {
 					--  Most Language Servers support renaming across files, etc.
 					map("<leader>cr", vim.lsp.buf.rename, "[R]e[n]ame")
 
+					map("<leader>cf", vim.lsp.buf.format, "Format")
+
 					-- Execute a code action, usually your cursor needs to be on top of an error
 					-- or a suggestion from your LSP for this to activate.
 					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
@@ -81,8 +101,8 @@ return {
 					-- Workspace symbols
 					map("<leader>ws", fzf.lsp_workspace_symbols, "[W]orkspace [S]ymbols")
 
-					-- Code actions
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+					-- Grep visual
+					vim.keymap.set("v", "<leader>ww", fzf.grep_visual, { desc = "Grep visual" })
 
 					-- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
 					---@param client vim.lsp.Client
@@ -187,42 +207,7 @@ return {
 			local servers = {
 				gopls = {},
 				-- ts_ls = {},
-				vtsls = {
-					refactor_auto_rename = true,
-					filetypes = {
-						"javascript",
-						"javascriptreact",
-						"javascript.jsx",
-						"typescript",
-						"typescriptreact",
-						"typescript.tsx",
-					},
-					root_dir = require("lspconfig.util").root_pattern(
-						"tsconfig.json",
-						"tsconfig.base.json",
-						"package.json",
-						".git"
-					),
-					settings = {
-						vtsls = {
-							autoUseWorkspaceTsdk = true,
-							enableMoveToFileCodeAction = true,
-						},
-						typescript = {
-							inlayHints = {
-								parameterNames = { enabled = "all" },
-								parameterTypes = { enabled = true },
-								variableTypes = { enabled = true },
-								functionLikeReturnTypes = { enabled = true },
-								enumMemberValues = { enabled = true },
-							},
-							suggest = {
-								completeFunctionCalls = true,
-							},
-							updateImportsOnFileMove = { enabled = "always" },
-						},
-					},
-				},
+				vtsls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
