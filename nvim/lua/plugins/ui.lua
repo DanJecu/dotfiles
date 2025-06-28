@@ -107,14 +107,14 @@ return {
 				sections = {
 					lualine_b = {},
 					lualine_c = {
+						diff,
+						diagnostics,
 						{
 							"filename",
 							path = 1,
 						},
 					},
 					lualine_x = {
-						diff,
-						diagnostics,
 						{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
 					},
 				},
@@ -132,6 +132,8 @@ return {
 					-- separator_style = "slant",
 					show_buffer_close_icons = false,
 					show_close_icon = false,
+					tab_size = 0,
+					max_name_length = 100,
 				},
 			})
 		end,

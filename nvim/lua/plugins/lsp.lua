@@ -207,7 +207,22 @@ return {
 			local servers = {
 				gopls = {},
 				-- ts_ls = {},
-				vtsls = {},
+				jsonls = {},
+				vtsls = {
+					root_dir = require("lspconfig.util").root_pattern(
+						"tsconfig.json",
+						"jsconfig.json",
+						"package.json",
+						".git"
+					),
+					settings = {
+						vtsls = {
+							experimental = {
+								workspaceRequired = true,
+							},
+						},
+					},
+				},
 				lua_ls = {
 					settings = {
 						Lua = {
