@@ -1,7 +1,6 @@
 font-size = 17
 adjust-cell-width = -1
 font-thicken = false
-font-family = Fira Code
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
@@ -25,7 +24,7 @@ unfocused-split-opacity = 0.8
 unfocused-split-fill = #737071
 
 window-theme = auto
-window-padding-x = 20
+window-padding-x = 5
 
 macos-icon-frame = chrome
 macos-titlebar-proxy-icon = visible
