@@ -1,0 +1,8 @@
+configuration {
+  terminal: "ghostty";
+  location: 0;
+  fullscreen: false;
+}
+
+
+@theme "/usr/share/rofi/themes/Arc-Dark.rasi"
