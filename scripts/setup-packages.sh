@@ -23,7 +23,8 @@ sudo pacman -S --noconfirm \
   ttf-droid \
   brightnessctl \
   bluez \
-  bluez-utils
+  bluez-utils \
+  rofi
 
 # Install packages from AUR (requires yay)
 yay -S --noconfirm \
