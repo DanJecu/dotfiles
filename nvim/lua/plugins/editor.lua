@@ -423,15 +423,15 @@ return {
 		end,
 	},
 
-	{
-		"supermaven-inc/supermaven-nvim",
-		config = function()
-			require("supermaven-nvim").setup({
-				disable_inline_completion = true,
-			})
-
-			-- Keybindings
-			vim.keymap.set("n", "<leader>sm", "<cmd>SupermavenToggle<cr>", { desc = "Toggle Supermaven" })
-		end,
-	},
+	-- {
+	-- 	"supermaven-inc/supermaven-nvim",
+	-- 	config = function()
+	-- 		require("supermaven-nvim").setup({
+	-- 			disable_inline_completion = true,
+	-- 		})
+	--
+	-- 		-- Keybindings
+	-- 		vim.keymap.set("n", "<leader>sm", "<cmd>SupermavenToggle<cr>", { desc = "Toggle Supermaven" })
+	-- 	end,
+	-- },
 }
