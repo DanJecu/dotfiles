@@ -24,7 +24,8 @@ sudo pacman -S --noconfirm \
   brightnessctl \
   bluez \
   bluez-utils \
-  rofi
+  rofi \
+  foliate
 
 # Install packages from AUR (requires yay)
 yay -S --noconfirm \
