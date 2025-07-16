@@ -434,4 +434,35 @@ return {
 			vim.keymap.set("n", "<leader>sm", "<cmd>SupermavenToggle<cr>", { desc = "Toggle Supermaven" })
 		end,
 	},
+	{
+		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			vim.g.loaded_netrw = 1
+			vim.g.loaded_netrwPlugin = 1
+
+			require("nvim-tree").setup({
+				update_focused_file = {
+					enable = true,
+					update_root = true,
+				},
+				view = {
+					width = 30,
+					side = "left",
+				},
+				renderer = {
+					group_empty = true,
+				},
+				filters = {
+					dotfiles = false,
+					git_ignored = false,
+				},
+			})
+
+			-- Use FindFileToggle to open at current file
+			vim.keymap.set("n", "<leader>e", ":NvimTreeFindFileToggle<CR>", { desc = "Toggle NvimTree (focused)" })
+		end,
+	},
 }
