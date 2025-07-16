@@ -1,6 +1,8 @@
 font-size = 17
 adjust-cell-width = -1
 font-thicken = false
+font-family = Adwaita Mono
+
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
@@ -27,5 +29,3 @@ window-theme = auto
 window-padding-x = 5
 
 macos-icon-frame = chrome
-macos-titlebar-proxy-icon = visible
-macos-titlebar-style = hidden
