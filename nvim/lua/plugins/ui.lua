@@ -1,23 +1,10 @@
 return {
 	{ -- colorscheme
-		"navarasu/onedark.nvim",
+		"Mofiqul/dracula.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			require("onedark").setup({
-				transparent = true,
-				colors = {
-					fg = "#d3d3d3",
-				},
-				highlights = {
-					-- Brackets, parentheses, braces in banana yellow
-					["@punctuation.bracket"] = { fg = "#d3d3d3" },
-					["@punctuation.delimiter"] = { fg = "#d3d3d3" },
-					["Delimiter"] = { fg = "#d3d3d3" },
-					["MatchParen"] = { fg = "#d3d3d3", bold = true },
-				},
-			})
-			require("onedark").load()
+			vim.cmd("colorscheme dracula")
 		end,
 	},
 	{ -- git related signs to the gutter, as well as utilities for managing changes
