@@ -28,6 +28,7 @@ symlinks=(
   "$DOTFILES_DIR/wezterm/.wezterm.lua:$HOME/.wezterm.lua"
   "$DOTFILES_DIR/git/.gitconfig:$HOME/.gitconfig"
   "$DOTFILES_DIR/ghostty:$HOME/.config/ghostty"
+  "$DOTFILES_DIR/alacritty:$HOME/.config/alacritty"
 )
 
 # Initialize counters
