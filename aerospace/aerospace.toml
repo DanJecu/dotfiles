@@ -149,7 +149,7 @@ run = ["layout floating", "move-node-to-workspace 1"]
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = ["layout floating", "move-node-to-workspace 2"]
+run = ["layout floating", "move-node-to-workspace 3"]
 
 [[on-window-detected]]
 if.app-id = 'com.brave.Browser'
