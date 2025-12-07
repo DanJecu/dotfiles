@@ -6,6 +6,11 @@ return {
 			local MiniFiles = require("mini.files")
 			MiniFiles.setup({
 				options = { use_as_default_explorer = true },
+content = {
+    filter = function(name, _)
+      return true
+    end,
+  },
 			})
 
 			vim.keymap.set("n", "<leader>pe", function()

@@ -5,6 +5,7 @@ return  {
       require('monokai-pro').setup {
         styles = {
         },
+	filter='spectrum'
       }
       vim.cmd.colorscheme 'monokai-pro'
     end,

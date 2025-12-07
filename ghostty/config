@@ -1,7 +1,12 @@
-theme = Dark+
+theme = Monokai Pro Spectrum
+font-family = Hack Nerd Font
 font-size = 17
 adjust-cell-width = -1
 font-thicken = false
+
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = true
 
 keybind = ctrl+\=new_split:right
 keybind = ctrl+-=new_split:down
