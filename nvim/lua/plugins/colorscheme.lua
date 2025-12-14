@@ -1,12 +1,15 @@
 return {
-  {
-    "sainnhe/sonokai",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      -- Optionally configure and load the colorscheme
-      -- directly inside the plugin declaration.
-      vim.cmd.colorscheme("sonokai")
-    end,
-  },
+	"folke/tokyonight.nvim",
+	priority = 1000,
+	config = function()
+		require("tokyonight").setup({
+			transparent = true,
+			styles = {
+				comments = { italic = false }, -- Disable italics in comments
+			},
+		})
+
+		-- 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+		vim.cmd.colorscheme("tokyonight-night")
+	end,
 }
