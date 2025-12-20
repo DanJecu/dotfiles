@@ -60,6 +60,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				},
 				file_ignore_patterns = {
 					"node_modules",
+					"dist",
 				},
 				path_display = {
 					"filename_first",

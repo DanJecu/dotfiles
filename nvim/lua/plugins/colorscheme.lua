@@ -1,15 +1,9 @@
 return {
-	"folke/tokyonight.nvim",
+	"sainnhe/sonokai",
 	priority = 1000,
 	config = function()
-		require("tokyonight").setup({
-			transparent = true,
-			styles = {
-				comments = { italic = false }, -- Disable italics in comments
-			},
-		})
+		-- vim.g.sonokai_transparent_background = 1
 
-		-- 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-		vim.cmd.colorscheme("tokyonight-night")
+		vim.cmd.colorscheme("sonokai")
 	end,
 }

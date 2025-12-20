@@ -52,11 +52,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
--- vim.lsp.inlay_hint.enable(true)
+vim.lsp.inlay_hint.enable(true)
 
 local severity = vim.diagnostic.severity
 
 vim.diagnostic.config({
+	float = {
+		max_width = 100,
+		wrap = true,
+		border = "rounded",
+	},
 	signs = {
 		text = {
 			[severity.ERROR] = " ",
@@ -65,4 +70,5 @@ vim.diagnostic.config({
 			[severity.INFO] = " ",
 		},
 	},
+	virtual_text = { current_line = false },
 })
