@@ -27,7 +27,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 
 -- Split window
 vim.api.nvim_set_keymap("n", "<leader>v", ":vsplit<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>s", ":split<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>h", ":split<CR>", { noremap = true, silent = true })
 
 -- Maximize the current vertical split
 vim.api.nvim_set_keymap(
@@ -46,7 +46,7 @@ vim.api.nvim_set_keymap(
 )
 
 -- Tab management
-vim.keymap.set("n", "te", ":tabedit")
+vim.keymap.set("n", "te", ":tabedit<CR>", { desc = "Create new tab" })
 vim.keymap.set("n", "<tab>", ":tabnext<Return>", { noremap = true, silent = true })
 vim.keymap.set("n", "<s-tab>", ":tabprev<Return>", { noremap = true, silent = true })
 
