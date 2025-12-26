@@ -1,11 +1,10 @@
-theme = Sonokai
-font-family = Hack Nerd Font
+theme = TokyoNight
 font-size = 20
 adjust-cell-width = -1
 font-thicken = false
 
-background-opacity = 0.90
-background-blur = 30
+background-opacity = 0.95
+background-blur = 40
 
 shell-integration-features = no-cursor
 cursor-style = block
