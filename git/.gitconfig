@@ -1,6 +1,5 @@
 [user]
 	name = DanJecu
-	email = 60711891+DanJecu@users.noreply.github.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
