@@ -1,3 +1,4 @@
-require("config")
-require("lazy_setup")
-require("lsp")
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.lazy_setup")

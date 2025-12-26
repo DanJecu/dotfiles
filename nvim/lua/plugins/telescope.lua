@@ -1,4 +1,4 @@
-return { -- Fuzzy Finder (files, lsp, etc)
+return {
 	"nvim-telescope/telescope.nvim",
 	event = "VimEnter",
 	dependencies = {
@@ -43,29 +43,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
 		-- [[ Configure Telescope ]]
 		-- See `:help telescope` and `:help telescope.setup()`
-		local actions = require("telescope.actions")
 		require("telescope").setup({
 			-- You can put your default mappings / updates / etc. in here
 			--  All the info you're looking for is in `:help telescope.setup()`
-			defaults = {
-				mappings = {
-					i = {
-						["<C-l>"] = actions.send_to_qflist + actions.open_qflist,
-					},
-					n = {
-						["<C-l>"] = actions.send_to_qflist + actions.open_qflist,
-						["<C-u>"] = actions.preview_scrolling_up,
-						["<C-d>"] = actions.preview_scrolling_down,
-					},
-				},
-				file_ignore_patterns = {
-					"node_modules",
-					"dist",
-				},
-				path_display = {
-					"filename_first",
-				},
-			},
+			--
+			-- defaults = {
+			--   mappings = {
+			--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
+			--   },
+			-- },
 			-- pickers = {}
 			extensions = {
 				["ui-select"] = {
