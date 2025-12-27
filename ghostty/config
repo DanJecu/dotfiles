@@ -1,5 +1,6 @@
-theme = TokyoNight
+theme = Gruvbox Dark 
 font-size = 20
+font-family = Hack Nerd Font
 adjust-cell-width = -1
 font-thicken = false
 

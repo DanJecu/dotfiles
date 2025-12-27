@@ -7,6 +7,12 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("CursorHold", {
+	callback = function()
+		vim.diagnostic.open_float(nil, { focus = false })
+	end,
+})
+
 function EditLineFromLazygit(file_path, line)
 	local path = vim.fn.expand("%:p")
 	if path == file_path then

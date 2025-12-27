@@ -57,4 +57,25 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
+	{
+		"j-hui/fidget.nvim",
+		opts = {
+			notification = {
+				window = {
+					winblend = 0,
+				},
+			},
+		},
+		config = function(_, opts)
+			require("fidget").setup(opts)
+
+			local transparent = { bg = "none" }
+
+			vim.api.nvim_set_hl(0, "FidgetTitle", transparent)
+			vim.api.nvim_set_hl(0, "FidgetTask", transparent)
+			vim.api.nvim_set_hl(0, "FidgetIcon", transparent)
+			vim.api.nvim_set_hl(0, "FidgetProgress", transparent)
+			vim.api.nvim_set_hl(0, "FidgetBorder", transparent)
+		end,
+	},
 }

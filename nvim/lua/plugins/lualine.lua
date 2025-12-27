@@ -43,26 +43,34 @@ return { -- Lualine Configuration
 			always_visible = false,
 		}
 
-		require("lualine").setup({
-			options = {
-				globalstatus = true,
-				section_separators = {},
-				component_separators = {},
-			},
-			sections = {
-				lualine_b = {},
-				lualine_c = {
-					diff,
-					diagnostics,
-					{
-						"filename",
-						path = 1,
-					},
-				},
-				lualine_x = {
-					{ git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
-				},
-			},
-		})
+require("lualine").setup({
+  options = {
+    globalstatus = true,
+    section_separators = {},
+    component_separators = {},
+  },
+  sections = {
+    lualine_a = {
+      {
+        "mode",
+        fmt = function(str)
+          return str:sub(1, 1)
+        end,
+      },
+    },
+    lualine_b = {},
+    lualine_c = {
+      diff,
+      diagnostics,
+      {
+        "filename",
+        path = 1,
+      },
+    },
+    lualine_x = {
+      { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available },
+    },
+  },
+})
 	end,
 }
