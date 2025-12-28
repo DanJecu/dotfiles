@@ -57,6 +57,14 @@ local severity = vim.diagnostic.severity
 vim.diagnostic.config({
 	virtual_text = false,
 	signs = true,
+	signs = {
+		text = {
+			[severity.ERROR] = " ",
+			[severity.WARN] = " ",
+			[severity.HINT] = "󰠠 ",
+			[severity.INFO] = " ",
+		},
+	},
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
