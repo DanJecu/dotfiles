@@ -13,6 +13,7 @@ return {
 				"emmet_ls",
 				"prismals",
 				"eslint",
+				"gopls",
 			},
 		},
 		dependencies = {

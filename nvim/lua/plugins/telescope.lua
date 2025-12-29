@@ -51,6 +51,11 @@ return {
 				path_display = {
 					"filename_first",
 				},
+				file_ignore_patterns = {
+					"node_modules",
+					"dist",
+					"build",
+				},
 			},
 			-- pickers = {}
 			extensions = {
