@@ -1,11 +1,28 @@
-theme = Gruvbox Dark 
-font-size = 20
-font-family = Hack Nerd Font
-adjust-cell-width = -1
-font-thicken = false
+theme = Catppuccin Frappe
 
-background-opacity = 0.95
-background-blur = 40
+macos-icon-frame = chrome
+macos-titlebar-proxy-icon = visible
+macos-titlebar-style = tabs
+
+font-family = Inconsolata Nerd Font
+font-size = 18
+font-thicken = true
+font-thicken-strength = 96
+
+adjust-cell-width = -1
+adjust-cell-height = 2
+
+adjust-cursor-thickness = 3
+
+window-inherit-working-directory = true
+window-padding-balance = true
+
+background-opacity = 1
+background-blur = true
+
+
+unfocused-split-opacity = 1.0
+split-divider-color = #33aadd
 
 shell-integration-features = no-cursor
 cursor-style = block
@@ -27,12 +44,3 @@ keybind = cmd+shift+l=resize_split:right,10
 
 keybind = global:cmd+ctrl+opt+shift+l=toggle_quick_terminal
 
-unfocused-split-opacity = 0.8
-unfocused-split-fill = #737071
-
-window-theme = auto
-window-padding-x = 5
-
-macos-icon-frame = chrome
-macos-titlebar-proxy-icon = visible
-macos-titlebar-style = tabs
