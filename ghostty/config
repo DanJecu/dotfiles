@@ -1,46 +1,56 @@
+# Theme and appearance
 theme = Catppuccin Frappe
+background-opacity = 1
+background-blur = true
 
+# macOS window chrome
 macos-icon-frame = chrome
 macos-titlebar-proxy-icon = visible
 macos-titlebar-style = tabs
 
+# Font
 font-family = Inconsolata Nerd Font
-font-size = 22
+font-size = 20
 font-thicken = true
 font-thicken-strength = 96
 
+# Cell and cursor sizing
 adjust-cell-width = -1
 adjust-cell-height = 2
-
 adjust-cursor-thickness = 3
 
+# Window behavior
 window-inherit-working-directory = true
 window-padding-balance = true
 
-background-opacity = 1
-background-blur = true
-
-
+# Split visuals
 unfocused-split-fill = #1e1e2e
 split-divider-color = #33aadd
 
+# Shell and cursor behavior
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = true
 
+# Keybindings: split creation
 keybind = cmd+a>v=new_split:right
 keybind = cmd+a>b=new_split:down
 
+# Keybindings: split navigation
 keybind = cmd+a>k=goto_split:top
 keybind = cmd+a>l=goto_split:right
 keybind = cmd+a>j=goto_split:bottom
 keybind = cmd+a>h=goto_split:left
 keybind = cmd+a>x=close_surface
 
+# Keybindings: split resizing
 keybind = cmd+shift+k=resize_split:up,10
 keybind = cmd+shift+j=resize_split:down,10
 keybind = cmd+shift+h=resize_split:left,10
 keybind = cmd+shift+l=resize_split:right,10
 
+# Keybindings: global
 keybind = global:cmd+ctrl+opt+shift+l=toggle_quick_terminal
 
+# Clipboard and safety
+clipboard-paste-protection = false
